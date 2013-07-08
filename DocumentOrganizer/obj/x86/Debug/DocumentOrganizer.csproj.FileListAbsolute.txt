@@ -1,0 +1,12 @@
+C:\Users\Luan\Documents\Visual Studio 2010\Projects\DocumentOrganizer\DocumentOrganizer\bin\Debug\DocumentOrganizer.exe
+C:\Users\Luan\Documents\Visual Studio 2010\Projects\DocumentOrganizer\DocumentOrganizer\bin\Debug\DocumentOrganizer.pdb
+C:\Users\Luan\Documents\Visual Studio 2010\Projects\DocumentOrganizer\DocumentOrganizer\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Luan\Documents\Visual Studio 2010\Projects\DocumentOrganizer\DocumentOrganizer\obj\x86\Debug\DocumentOrganizer.Properties.Resources.resources
+C:\Users\Luan\Documents\Visual Studio 2010\Projects\DocumentOrganizer\DocumentOrganizer\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Luan\Documents\Visual Studio 2010\Projects\DocumentOrganizer\DocumentOrganizer\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Luan\Documents\Visual Studio 2010\Projects\DocumentOrganizer\DocumentOrganizer\obj\x86\Debug\DocumentOrganizer.exe
+C:\Users\Luan\Documents\Visual Studio 2010\Projects\DocumentOrganizer\DocumentOrganizer\obj\x86\Debug\DocumentOrganizer.pdb
+C:\Users\Luan\Documents\Visual Studio 2010\Projects\DocumentOrganizer\DocumentOrganizer\obj\x86\Debug\DocumentOrganizer.ResultForm.resources
+C:\Users\Luan\Documents\Visual Studio 2010\Projects\DocumentOrganizer\DocumentOrganizer\obj\x86\Debug\DocumentOrganizer.MainForm.resources
+C:\Users\Luan\Documents\Visual Studio 2010\Projects\DocumentOrganizer - Copy\DocumentOrganizer\obj\x86\Debug\DocumentOrganizer.exe
+C:\Users\Luan\Documents\Visual Studio 2010\Projects\DocumentOrganizer - Copy\DocumentOrganizer\obj\x86\Debug\DocumentOrganizer.pdb
