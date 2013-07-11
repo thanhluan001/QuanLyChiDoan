@@ -25,58 +25,20 @@ namespace QuanLyChiDoan
         {
             InitializeComponent();
 
-            string connStr = SQLCall.GetConnection();
-            using (MySqlConnection conn = new MySqlConnection(connStr))
-            {
-                conn.Open();
+            chidoanID = SQLCall.getChidoanInfo();
 
-                using (MySqlCommand cmd = new MySqlCommand("select * from chidoan.`chidoaninfo`", conn))
-                {
-                    MySqlDataReader r = cmd.ExecuteReader();
+            //initialize
+            ChiDoanComboBox.Items.AddRange(chidoanID.Keys.ToArray());
+            PersonalInfoChidoanComboBox.Items.AddRange(chidoanID.Keys.ToArray());
 
-                    bool count = true;
-                    while (r.Read())
-                    {
-                        ChiDoanComboBox.Items.Add(r["name"]);
-                        chidoanID.Add (r["name"].ToString(), Convert.ToInt32(r["chidoanID"]));
-                        if (count)
-                        {
-                            string format = "MMM d yyyy"; 
-                            TermFrom.Text =  ((DateTime)r["termFrom"]).ToString(format);
-                            TermTo.Text = ((DateTime)r["termTo"]).ToString(format);
-                            OperationalRegionLabel.Text = r["operationRegion"].ToString();
-
-                            count = false;
-                        }
-                    }
-                }
-            }
-
-            
             ChiDoanComboBox.SelectedIndex = 0;
 
             comboBox1.SelectedIndex = comboBox1.Items.Count - 1;
             comboBox2.SelectedIndex = 0;
 
-            using (MySqlConnection conn = new MySqlConnection(connStr))
-            {
-                conn.Open();
+            NumberOfMembersLabel.Text = SQLCall.getDoanVienCountFromChiDoan(chidoanID[ChiDoanComboBox.SelectedItem.ToString()]).ToString();
 
-                using (MySqlCommand cmd = new MySqlCommand("select count(*) from chidoan.doanvienrecord where chidoanID=@chidoanID", conn))
-                {
-                    cmd.Parameters.AddWithValue("@chidoanID", chidoanID[ChiDoanComboBox.SelectedItem.ToString()]);
-
-                    MySqlDataReader r = cmd.ExecuteReader();
-
-
-                    bool count = true;
-                    while (r.Read())
-                    {
-                        NumberOfMembersLabel.Text = r[0].ToString();
-                    }
-                }
-            }
-
+            //housecleaning
             ClearResultPage();
         }
 
@@ -107,23 +69,9 @@ namespace QuanLyChiDoan
             if (SaveDirectory == string.Empty) return;
             
             //Enter this information to database
-            string connStr = SQLCall.GetConnection();
 
-            using (MySqlConnection conn = new MySqlConnection(connStr))
-            {
-                conn.Open();
+            SQLCall.insertDoanVien(
 
-                using (MySqlCommand cmd = new MySqlCommand("insert into Records (DocumentID, topic, category, full_path, time) values" +
-                                                            "(@DocumentID, @topic, @category, @full_path, @time)", conn ))
-                {
-                    cmd.Parameters.AddWithValue("@DocumentID", IncomingDocID.Text );
-                    cmd.Parameters.AddWithValue("@category", comboBox1.SelectedItem.ToString() );
-                    cmd.Parameters.AddWithValue("@full_path", SaveDirectory);
-                    cmd.Parameters.AddWithValue("@time", IncomingDocDatetime.Value);
-
-                    cmd.ExecuteNonQuery();
-                }
-            }
 
             // Notification
             MessageBox.Show("Insert completed", "Notification");
