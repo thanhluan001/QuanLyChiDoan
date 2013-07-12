@@ -15,11 +15,11 @@ namespace QuanLyChiDoan
 {
     public partial class MainForm : Form
     {
-        public string homeFolder = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "DocumentOrganizer");
-
         private string currentDocumentToOpen = string.Empty;
 
         Dictionary<string, int> chidoanID = new Dictionary<string, int>();
+        
+        int currentDoanVienID = -1;
 
         public MainForm()
         {
@@ -28,16 +28,23 @@ namespace QuanLyChiDoan
             chidoanID = SQLCall.getChidoanInfo();
 
             //initialize
+            GenderComboBox.SelectedIndex = 1;
+
+            ((Control)NewMemberTab.TabPages[1]).Enabled = false;
+            ((Control)NewMemberTab.TabPages[2]).Enabled = false;
+
             ChiDoanComboBox.Items.AddRange(chidoanID.Keys.ToArray());
             PersonalInfoChidoanComboBox.Items.AddRange(chidoanID.Keys.ToArray());
 
             ChiDoanComboBox.SelectedIndex = 0;
+            PersonalInfoChidoanComboBox.SelectedIndex = 0;
 
-            comboBox1.SelectedIndex = comboBox1.Items.Count - 1;
+            GenderComboBox.SelectedIndex = GenderComboBox.Items.Count - 1;
             comboBox2.SelectedIndex = 0;
 
             NumberOfMembersLabel.Text = SQLCall.getDoanVienCountFromChiDoan(chidoanID[ChiDoanComboBox.SelectedItem.ToString()]).ToString();
 
+            NewMemberTab.Enabled = false;
             //housecleaning
             ClearResultPage();
         }
@@ -47,11 +54,12 @@ namespace QuanLyChiDoan
             dataGridView1.Rows.Clear();
         }
 
-        private bool ValidateInput()
+        private bool ValidateInputPersonalInfo()
         {
-            if (IncomingDocID.Text == string.Empty)
+
+            if (NameTxt.Text == string.Empty)
             {
-                MessageBox.Show("ID Missing", "Error");
+                MessageBox.Show("Thiếu họ và tên", "Error");
                 return false;
             }
 
@@ -61,30 +69,52 @@ namespace QuanLyChiDoan
         private void EnterButton_Click(object sender, EventArgs e)
         {
             //Check form completion
-            if (!ValidateInput()) return;
-
-            //Save file
-            string SaveDirectory = SaveFileToArchive();
-
-            if (SaveDirectory == string.Empty) return;
+            if (!ValidateInputPersonalInfo()) return;
             
             //Enter this information to database
-
-            SQLCall.insertDoanVien(
-
+            SQLCall.insertDoanVienPersonalInfo(chidoanID[PersonalInfoChidoanComboBox.SelectedItem.ToString()], 
+                                            NameTxt.Text, dateOfBirthDrp.Value, 
+                                            GenderComboBox.SelectedItem.ToString(),
+                                            SQLCall.ifEmptyThenNull(ReligionTxt.Text),
+                                            SQLCall.ifEmptyThenNull(RaceTxt.Text));
 
             // Notification
             MessageBox.Show("Insert completed", "Notification");
 
             //housekeeping
             ClearField();
+            currentDoanVienID = SQLCall.getIDDoanVien();
+
+            ((Control)NewMemberTab.TabPages[1]).Enabled = true;
+            ((Control)NewMemberTab.TabPages[2]).Enabled = true;
+
+            NewMemberTab.SelectedIndex = 1; //change tab when finished
+        }
+
+        private void ContactButton_Click(object sender, EventArgs e)
+        {
+            //validation
+            if (currentDoanVienID == -1)
+            {
+                MessageBox.Show("Invalid doan vien ID", "Error");
+                return;
+            }
+
+            //process
+            SQLCall.insertDoanVienContactInfo(currentDoanVienID, 
+                                SQLCall.ifEmptyThenNull(currentAddressTxt.Text), 
+                                SQLCall.ifEmptyThenNull(telephoneTxt.Text), 
+                                SQLCall.ifEmptyThenNull(emailTxt.Text));
+
+            // feedback
+            MessageBox.Show("Insert completed", "Notification");
         }
 
         private void ClearField()
         {
-            IncomingDocID.Text = string.Empty;
-            comboBox1.SelectedIndex = comboBox1.Items.Count - 1;
-            IncomingDocDatetime.Value = DateTime.Now;
+            NameTxt.Text = string.Empty;
+            GenderComboBox.SelectedIndex = GenderComboBox.Items.Count - 1;
+            dateOfBirthDrp.Value = DateTime.Now;
         }
 
         private void SearchButton_Click(object sender, EventArgs e)
@@ -238,23 +268,6 @@ namespace QuanLyChiDoan
 
         }
 
-        private string SaveFileToArchive()
-        {
-            string result = string.Empty;
-
-            string currentFolder = System.IO.Path.Combine(homeFolder, IncomingDocDatetime.Value.ToString("yyyy_MM_dd"));
-
-            // create folder if not exists
-            if (!File.Exists(currentFolder))
-                Directory.CreateDirectory(currentFolder);
-
-            //Process.Start(openFileDialog1.FileName);
-            result = System.IO.Path.Combine(currentFolder, openFileDialog1.SafeFileName);
-            File.Copy(openFileDialog1.FileName, System.IO.Path.Combine(result));
-
-            return result;
-        }
-
         private void SearchAllButton_Click(object sender, EventArgs e)
         {
             DisplayAllRecords();
@@ -355,5 +368,28 @@ namespace QuanLyChiDoan
             DisplayAllRecords();
         }
 
+        private void button5_Click(object sender, EventArgs e)
+        {
+            //notification 
+            MessageBox.Show("ID mới cho đoàn viên", "Notification");
+
+            NewMemberTab.Enabled = true;            
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            //validation
+
+            //process
+            SQLCall.insertEducationLevel(currentDoanVienID,
+                SQLCall.ifEmptyThenNull(EducationTxt.Text),
+                SQLCall.ifEmptyThenNull(ProfessionalLevelTxt.Text),
+                SQLCall.ifEmptyThenNull(PoliticalLevelTxt.Text),
+                SQLCall.ifEmptyThenNull(ResponsibilityTxt.Text),
+                DoanEntryDateDrp.Value, DangEntryDateDrp.Value);
+
+            //housecleaning
+            MessageBox.Show("Insert completed", "Notification" );
+        }
     }
 }

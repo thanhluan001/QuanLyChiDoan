@@ -68,24 +68,96 @@ namespace QuanLyChiDoan
             return result;
         }
 
-        public static void insertDoanVien(int chidoanID, int name, DateTime dateofbirth, string gender)
+        public static void insertDoanVienPersonalInfo(int chidoanID, string name, DateTime dateofbirth, string gender, string religion, string race)
         {
             string connStr = GetConnection();
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
                 conn.Open();
 
-                using (MySqlCommand cmd = new MySqlCommand("insert into chidoan.doanvienrecord (chidoanID, name, dateofbirth, gender)" +
-                                    "values (@chidoanID, @name, @dateofbirth, @gender)", conn))
+                using (MySqlCommand cmd = new MySqlCommand("insert into chidoan.doanvienrecord (chidoanID, name, dateofbirth, gender, religion, race)" +
+                                    "values (@chidoanID, @name, @dateofbirth, @gender, @religion, @race)", conn))
                 {
                     cmd.Parameters.AddWithValue("@chidoanID", chidoanID);
                     cmd.Parameters.AddWithValue("@name", name);
                     cmd.Parameters.AddWithValue("@dateofbirth", dateofbirth);
                     cmd.Parameters.AddWithValue("@gender", gender);
+                    cmd.Parameters.AddWithValue("@religion", religion);
+                    cmd.Parameters.AddWithValue("@race", race);
 
                     cmd.ExecuteNonQuery();
                 }
             }
+        }
+
+        public static void insertDoanVienContactInfo(int ID, string currentaddress, string telephone, string email)
+        {
+            string connStr = GetConnection();
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            {
+                conn.Open();
+
+                using (MySqlCommand cmd = new MySqlCommand("update chidoan.doanvienrecord " +
+                                    "set currentaddress=@currentaddress, telephone=@telephone, email=@email " +
+                                    "where ID=@ID" , conn))
+                {
+                    cmd.Parameters.AddWithValue("@ID", ID);
+                    cmd.Parameters.AddWithValue("@currentaddress", currentaddress);
+                    cmd.Parameters.AddWithValue("@telephone", telephone);
+                    cmd.Parameters.AddWithValue("@email", email);
+
+                    cmd.ExecuteNonQuery();
+                }
+            } 
+        }
+
+        public static int getIDDoanVien()
+        {
+            int result = -1;
+            string connStr = GetConnection();
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            {
+                conn.Open();
+
+                using (MySqlCommand cmd = new MySqlCommand("select ID from chidoan.doanvienrecord order by ID DESC limit 1", conn))
+                {
+                    result = Convert.ToInt32(cmd.ExecuteScalar() );
+                }
+            }
+            return result;
+        }
+
+        public static void insertEducationLevel(int ID, string educationLevel, string professionalLevel, 
+                                            string politicalLevel, string responsibility,
+                                            DateTime DoanEntryDate, DateTime DangEntryDate)
+        {
+            string connStr = GetConnection();
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            {
+                conn.Open();
+
+                using (MySqlCommand cmd = new MySqlCommand("update chidoan.doanvienrecord " +
+                                    "set education=@educationLevel, professionalLevel=@professionalLevel, politicalLevel=@politicalLevel, " +
+                                    "DoanEntryDate=@DoanEntryDate, DangEntryDate=@DangEntryDate " + 
+                                    "where ID=@ID", conn))
+                {
+                    cmd.Parameters.AddWithValue("@ID", ID);
+                    cmd.Parameters.AddWithValue("@education", educationLevel);
+                    cmd.Parameters.AddWithValue("@professionalLevel", professionalLevel);
+                    cmd.Parameters.AddWithValue("@politicalLevel", politicalLevel);
+                    cmd.Parameters.AddWithValue("@DoanEntryLevel", DoanEntryDate);
+                    cmd.Parameters.AddWithValue("@responsibility", responsibility);
+                    cmd.Parameters.AddWithValue("@DoanEntryDate", DoanEntryDate);
+                    cmd.Parameters.AddWithValue("@DangEntryDate", DangEntryDate);
+
+                    cmd.ExecuteNonQuery();
+                }
+            } 
+        }
+
+        public static string ifEmptyThenNull(string input)
+        {
+            return input == string.Empty ? null : input;
         }
     }
 }
