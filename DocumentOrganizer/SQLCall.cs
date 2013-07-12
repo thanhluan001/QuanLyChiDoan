@@ -133,7 +133,7 @@ namespace QuanLyChiDoan
         {
             string connStr = GetConnection();
             using (MySqlConnection conn = new MySqlConnection(connStr))
-            {
+            { heelpo
                 conn.Open();
 
                 using (MySqlCommand cmd = new MySqlCommand("update chidoan.doanvienrecord " +
