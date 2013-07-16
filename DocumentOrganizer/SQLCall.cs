@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using MySql.Data.MySqlClient;
+using System.IO;
+using System.Configuration;
+using System.Drawing;
 
 namespace QuanLyChiDoan
 {
@@ -15,7 +18,8 @@ namespace QuanLyChiDoan
 
         public static string GetConnection()
         {
-            return String.Format("server={0};pwd={1};user={2};database={3};", server, pwd, user, database);
+            return ConfigurationManager.ConnectionStrings["MySqlConnection"].ConnectionString;            
+            //return String.Format("server={0};pwd={1};user={2};database={3};", server, pwd, user, database);
         }
 
         public static Dictionary<string,int> getChidoanInfo()
@@ -108,7 +112,7 @@ namespace QuanLyChiDoan
 
                     cmd.ExecuteNonQuery();
                 }
-            } 
+            }
         }
 
         public static int getIDDoanVien()
@@ -133,7 +137,7 @@ namespace QuanLyChiDoan
         {
             string connStr = GetConnection();
             using (MySqlConnection conn = new MySqlConnection(connStr))
-            { heelpo
+            { 
                 conn.Open();
 
                 using (MySqlCommand cmd = new MySqlCommand("update chidoan.doanvienrecord " +
@@ -152,12 +156,75 @@ namespace QuanLyChiDoan
 
                     cmd.ExecuteNonQuery();
                 }
-            } 
+            }
         }
 
         public static string ifEmptyThenNull(string input)
         {
             return input == string.Empty ? null : input;
+        }
+
+        public static Bitmap loadImage(int doanvienID)
+        {
+            byte[] rawData;
+            UInt32 fileSize;
+            Bitmap resultImage = null;
+
+            string connStr = GetConnection();
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            {
+                conn.Open();
+
+                using (MySqlCommand cmd = new MySqlCommand("select data, size from chidoan.image " +
+                                    "where doanvienID=@doanvienID", conn))
+                {
+                    cmd.Parameters.AddWithValue("@doanvienID", doanvienID);
+
+                    MySqlDataReader r = cmd.ExecuteReader();
+
+                    while (r.Read())
+                    {
+                        fileSize = r.GetUInt32("size");                        
+                        rawData = new byte[fileSize];
+
+                        r.GetBytes(0, 0, rawData, 0, (int) fileSize);
+
+                        MemoryStream ms = new MemoryStream(rawData);
+                        resultImage = new Bitmap(ms);
+                        ms.Close();
+                        ms.Dispose(); 
+                        
+                    }
+                }
+            }
+            return resultImage;
+        }
+
+        public static string saveBlob(int doanvienID, string imageString) {
+
+            string output = "Good";
+
+            FileStream fs = new FileStream(imageString, FileMode.Open);
+            int size = (int) fs.Length;
+            byte[] bytes = new byte[size];
+            fs.Read(bytes, 0, size);
+            fs.Close();
+
+            string connStr = GetConnection();
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            {
+                conn.Open();
+
+                using (MySqlCommand cmd = new MySqlCommand("insert into chidoan.image (data, size)" +
+                                    "values ( @avataimage, @size ) ", conn))
+                {
+                    cmd.Parameters.AddWithValue("@avataimage", bytes);
+                    cmd.Parameters.AddWithValue("@size", size);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            return output;
         }
     }
 }

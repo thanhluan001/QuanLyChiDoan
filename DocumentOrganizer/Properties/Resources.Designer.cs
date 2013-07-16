@@ -59,5 +59,14 @@ namespace QuanLyChiDoan.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to noPhoto.png.
+        /// </summary>
+        internal static string NoImagePic {
+            get {
+                return ResourceManager.GetString("NoImagePic", resourceCulture);
+            }
+        }
     }
 }

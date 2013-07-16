@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.EnterButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -49,6 +50,9 @@
             this.button5 = new System.Windows.Forms.Button();
             this.NewMemberTab = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.AvataPic = new System.Windows.Forms.PictureBox();
             this.PersonalInfoChidoanComboBox = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
             this.NameTxt = new System.Windows.Forms.TextBox();
@@ -116,12 +120,13 @@
             this.Path = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button2 = new System.Windows.Forms.Button();
             this.OpenDocButton = new System.Windows.Forms.Button();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.NewItem.SuspendLayout();
             this.NewMemberTab.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AvataPic)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.Search.SuspendLayout();
@@ -335,6 +340,9 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.button8);
+            this.tabPage2.Controls.Add(this.button7);
+            this.tabPage2.Controls.Add(this.AvataPic);
             this.tabPage2.Controls.Add(this.label1);
             this.tabPage2.Controls.Add(this.EnterButton);
             this.tabPage2.Controls.Add(this.PersonalInfoChidoanComboBox);
@@ -356,6 +364,36 @@
             this.tabPage2.TabIndex = 0;
             this.tabPage2.Text = "Thông tin cá nhân";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(484, 289);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(75, 23);
+            this.button8.TabIndex = 30;
+            this.button8.Text = "button8";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(484, 222);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(75, 23);
+            this.button7.TabIndex = 29;
+            this.button7.Text = "Đổi hình ảnh";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // AvataPic
+            // 
+            this.AvataPic.Image = ((System.Drawing.Image)(resources.GetObject("AvataPic.Image")));
+            this.AvataPic.Location = new System.Drawing.Point(449, 52);
+            this.AvataPic.Name = "AvataPic";
+            this.AvataPic.Size = new System.Drawing.Size(138, 165);
+            this.AvataPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.AvataPic.TabIndex = 28;
+            this.AvataPic.TabStop = false;
             // 
             // PersonalInfoChidoanComboBox
             // 
@@ -991,10 +1029,10 @@
             this.OpenDocButton.UseVisualStyleBackColor = true;
             this.OpenDocButton.Click += new System.EventHandler(this.OpenDocButton_Click);
             // 
-            // openFileDialog1
+            // openFileDialog2
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
+            this.openFileDialog2.FileName = "openFileDialog2";
+            this.openFileDialog2.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog2_FileOk);
             // 
             // MainForm
             // 
@@ -1012,6 +1050,7 @@
             this.NewMemberTab.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AvataPic)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.tabPage4.ResumeLayout(false);
@@ -1060,7 +1099,6 @@
         private System.Windows.Forms.DateTimePicker SearchDoc_DateTimeFrom;
         private System.Windows.Forms.RadioButton NoDateRadioBtn;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button SearchAllButton;
         private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn DatabaseID;
@@ -1117,6 +1155,10 @@
         private System.Windows.Forms.Button ContactButton;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.PictureBox AvataPic;
+        private System.Windows.Forms.OpenFileDialog openFileDialog2;
+        private System.Windows.Forms.Button button8;
     }
 }
 

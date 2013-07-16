@@ -18,3 +18,4 @@ C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\DocumentOrgani
 C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\DocumentOrganizer\obj\x86\Debug\DocumentOrganizer.ResultForm.resources
 C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\DocumentOrganizer\obj\x86\Debug\GenerateResource.read.1.tlog
 C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\DocumentOrganizer\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\DocumentOrganizer\bin\Debug\QuanLyChiDoan.exe.config

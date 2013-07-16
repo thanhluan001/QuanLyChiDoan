@@ -78,12 +78,17 @@ namespace QuanLyChiDoan
                                             SQLCall.ifEmptyThenNull(ReligionTxt.Text),
                                             SQLCall.ifEmptyThenNull(RaceTxt.Text));
 
+            currentDoanVienID = SQLCall.getIDDoanVien();
+
+            if (AvataPic.ImageLocation != "noPhoto.png")
+                SQLCall.saveBlob(currentDoanVienID, openFileDialog2.FileName);
+
             // Notification
             MessageBox.Show("Insert completed", "Notification");
 
             //housekeeping
             ClearField();
-            currentDoanVienID = SQLCall.getIDDoanVien();
+            
 
             ((Control)NewMemberTab.TabPages[1]).Enabled = true;
             ((Control)NewMemberTab.TabPages[2]).Enabled = true;
@@ -115,6 +120,7 @@ namespace QuanLyChiDoan
             NameTxt.Text = string.Empty;
             GenderComboBox.SelectedIndex = GenderComboBox.Items.Count - 1;
             dateOfBirthDrp.Value = DateTime.Now;
+            AvataPic.ImageLocation = "noPhoto.png";
         }
 
         private void SearchButton_Click(object sender, EventArgs e)
@@ -260,12 +266,7 @@ namespace QuanLyChiDoan
 
         private void button3_Click(object sender, EventArgs e)
         {
-            openFileDialog1.ShowDialog();
-        }
-
-        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
-        {
-
+            
         }
 
         private void SearchAllButton_Click(object sender, EventArgs e)
@@ -390,6 +391,28 @@ namespace QuanLyChiDoan
 
             //housecleaning
             MessageBox.Show("Insert completed", "Notification" );
+        }
+
+        private void openFileDialog2_FileOk(object sender, CancelEventArgs e)
+        {
+            string filePath = openFileDialog2.FileName;
+
+            //insert into database
+            SQLCall.saveBlob(currentDoanVienID, filePath);
+
+            //set picture
+            AvataPic.ImageLocation = filePath;
+            
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            openFileDialog2.ShowDialog();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            AvataPic.Image = SQLCall.loadImage(12);
         }
     }
 }
