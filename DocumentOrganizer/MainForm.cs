@@ -15,11 +15,13 @@ namespace QuanLyChiDoan
 {
     public partial class MainForm : Form
     {
-        private string currentDocumentToOpen = string.Empty;
+        private Dictionary<string, int> chidoanID;
 
-        Dictionary<string, int> chidoanID = new Dictionary<string, int>();
-        
-        int currentDoanVienID = -1;
+        public int currentDoanVienID
+        {
+            get; 
+            set;
+        }
 
         public MainForm()
         {
@@ -33,10 +35,10 @@ namespace QuanLyChiDoan
                 signin.setErrorMessage("Log in unsucessful. Please try again");
             }
 
-            chidoanID = SQLCall.getChidoanInfo();
-
             //initialize
             GenderComboBox.SelectedIndex = 1;
+
+            chidoanID = SQLCall.getChidoanInfo();
 
             ((Control)NewMemberTab.TabPages[1]).Enabled = false;
             ((Control)NewMemberTab.TabPages[2]).Enabled = false;
@@ -416,11 +418,6 @@ namespace QuanLyChiDoan
         private void button7_Click(object sender, EventArgs e)
         {
             openFileDialog2.ShowDialog();
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            AvataPic.Image = SQLCall.loadImage(12);
         }
 
         private void button3_Click_1(object sender, EventArgs e)

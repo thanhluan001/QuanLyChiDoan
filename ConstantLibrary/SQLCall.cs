@@ -7,7 +7,7 @@ using System.IO;
 using System.Configuration;
 using System.Drawing;
 
-namespace QuanLyChiDoan
+namespace ConstantLibrary
 {
     public class SQLCall
     {

@@ -50,7 +50,6 @@
             this.button5 = new System.Windows.Forms.Button();
             this.NewMemberTab = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.AvataPic = new System.Windows.Forms.PictureBox();
             this.PersonalInfoChidoanComboBox = new System.Windows.Forms.ComboBox();
@@ -120,7 +119,9 @@
             this.Path = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button2 = new System.Windows.Forms.Button();
             this.OpenDocButton = new System.Windows.Forms.Button();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
+            this.addUserControl1 = new HelperFormControl.AddUserControl();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.NewItem.SuspendLayout();
@@ -133,6 +134,7 @@
             this.panel1.SuspendLayout();
             this.Result.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.tabPage5.SuspendLayout();
             this.SuspendLayout();
             // 
             // EnterButton
@@ -161,6 +163,7 @@
             this.tabControl1.Controls.Add(this.NewItem);
             this.tabControl1.Controls.Add(this.Search);
             this.tabControl1.Controls.Add(this.Result);
+            this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Location = new System.Drawing.Point(6, 7);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -341,7 +344,6 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.button8);
             this.tabPage2.Controls.Add(this.button7);
             this.tabPage2.Controls.Add(this.AvataPic);
             this.tabPage2.Controls.Add(this.label1);
@@ -365,16 +367,6 @@
             this.tabPage2.TabIndex = 0;
             this.tabPage2.Text = "Thông tin cá nhân";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // button8
-            // 
-            this.button8.Location = new System.Drawing.Point(484, 289);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(75, 23);
-            this.button8.TabIndex = 30;
-            this.button8.Text = "button8";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button7
             // 
@@ -1030,10 +1022,27 @@
             this.OpenDocButton.UseVisualStyleBackColor = true;
             this.OpenDocButton.Click += new System.EventHandler(this.OpenDocButton_Click);
             // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.addUserControl1);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(744, 486);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "Test";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
             // openFileDialog2
             // 
             this.openFileDialog2.FileName = "openFileDialog2";
             this.openFileDialog2.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog2_FileOk);
+            // 
+            // addUserControl1
+            // 
+            this.addUserControl1.Location = new System.Drawing.Point(19, 16);
+            this.addUserControl1.Name = "addUserControl1";
+            this.addUserControl1.Size = new System.Drawing.Size(707, 456);
+            this.addUserControl1.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -1062,6 +1071,7 @@
             this.panel1.PerformLayout();
             this.Result.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.tabPage5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1159,7 +1169,8 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.PictureBox AvataPic;
         private System.Windows.Forms.OpenFileDialog openFileDialog2;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.TabPage tabPage5;
+        private HelperFormControl.AddUserControl addUserControl1;
     }
 }
 

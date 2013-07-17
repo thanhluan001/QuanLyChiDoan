@@ -138,6 +138,12 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HelperFormControl\HelperFormControl.csproj">
+      <Project>{DF8AEF1D-C102-48F9-B8C3-79B03CB1DACE}</Project>
+      <Name>HelperFormControl</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

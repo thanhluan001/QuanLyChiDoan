@@ -20,3 +20,7 @@ C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\DocumentOrgani
 C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\DocumentOrganizer\bin\Debug\QuanLyChiDoan.exe.config
 C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\DocumentOrganizer\obj\x86\Debug\QuanLyChiDoan.AddNewChidoan.resources
 C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\DocumentOrganizer\obj\x86\Debug\QuanLyChiDoan.SignIn.resources
+C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\DocumentOrganizer\bin\Debug\HelperFormControl.dll
+C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\DocumentOrganizer\bin\Debug\HelperFormControl.pdb
+C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\DocumentOrganizer\bin\Debug\ConstantLibrary.dll
+C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\DocumentOrganizer\bin\Debug\ConstantLibrary.pdb
