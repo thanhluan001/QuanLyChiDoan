@@ -25,6 +25,14 @@ namespace QuanLyChiDoan
         {
             InitializeComponent();
 
+            //validation, sign in
+            SignIn signin = new SignIn();
+
+            while (signin.ShowDialog() != DialogResult.OK)
+            {
+                signin.setErrorMessage("Log in unsucessful. Please try again");
+            }
+
             chidoanID = SQLCall.getChidoanInfo();
 
             //initialize
@@ -413,6 +421,17 @@ namespace QuanLyChiDoan
         private void button8_Click(object sender, EventArgs e)
         {
             AvataPic.Image = SQLCall.loadImage(12);
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            AddNewChidoan form2 = new AddNewChidoan();
+
+            if (form2.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+            
         }
     }
 }

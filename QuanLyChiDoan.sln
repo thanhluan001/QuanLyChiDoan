@@ -3,6 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuanLyChiDoan", "DocumentOrganizer\QuanLyChiDoan.csproj", "{F5929C19-EFFD-488C-87C5-93895466A8B2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C9DD1B47-5986-422B-8D62-A9661B3BB456}"
+	ProjectSection(SolutionItems) = preProject
+		DocumentOrganizer\noPhoto.png = DocumentOrganizer\noPhoto.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86

@@ -22,6 +22,48 @@ namespace QuanLyChiDoan
             //return String.Format("server={0};pwd={1};user={2};database={3};", server, pwd, user, database);
         }
 
+        public static void insertChidoanInfo(string name, DateTime termTo, DateTime termFrom, string operatingRegion)
+        {
+            string connStr = GetConnection();
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            {
+                conn.Open();
+
+                using (MySqlCommand cmd = new MySqlCommand("insert into chidoan (name, termTo, termFrom, operatingRegion) " +
+                                                        "(@name, @termTo, @termFrom, @opeartingRegion)", conn))
+                {
+                    cmd.Parameters.AddWithValue("@name", name);
+                    cmd.Parameters.AddWithValue("@termTo", termTo);
+                    cmd.Parameters.AddWithValue("@termFrom", termFrom);
+                    cmd.Parameters.AddWithValue("@opeartingRegion", operatingRegion);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public static bool isSignInSucessful(string username, string password)
+        {
+            string connStr = GetConnection();
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            {
+                conn.Open();
+
+                using (MySqlCommand cmd = new MySqlCommand("select count(*) from chidoan.account " +
+                                                    "where username=@username and password=@password", conn))
+                {
+                    cmd.Parameters.AddWithValue("@username", username);
+                    cmd.Parameters.AddWithValue("@password", password);
+                    
+                    int r = Convert.ToInt32( cmd.ExecuteScalar());
+
+                    if (r == 1) return true;
+                    else return false;
+                }
+            }
+            // code not reachable at this location
+        }
+
         public static Dictionary<string,int> getChidoanInfo()
         {
             string connStr = GetConnection();
@@ -200,9 +242,7 @@ namespace QuanLyChiDoan
             return resultImage;
         }
 
-        public static string saveBlob(int doanvienID, string imageString) {
-
-            string output = "Good";
+        public static void saveBlob(int doanvienID, string imageString) {
 
             FileStream fs = new FileStream(imageString, FileMode.Open);
             int size = (int) fs.Length;
@@ -224,7 +264,6 @@ namespace QuanLyChiDoan
                     cmd.ExecuteNonQuery();
                 }
             }
-            return output;
         }
     }
 }
