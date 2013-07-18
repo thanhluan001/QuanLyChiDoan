@@ -8,19 +8,19 @@ C:\Users\Luan\Documents\Visual Studio 2010\Projects\DocumentOrganizer - Copy\Doc
 C:\Users\Luan\Documents\Visual Studio 2010\Projects\DocumentOrganizer - Copy\DocumentOrganizer\obj\x86\Debug\QuanLyChiDoan.exe
 C:\Users\Luan\Documents\Visual Studio 2010\Projects\DocumentOrganizer - Copy\DocumentOrganizer\obj\x86\Debug\QuanLyChiDoan.pdb
 C:\Users\Luan\Documents\Visual Studio 2010\Projects\DocumentOrganizer - Copy\DocumentOrganizer\obj\x86\Debug\QuanLyChiDoan.MainForm.resources
-C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\DocumentOrganizer\obj\x86\Debug\QuanLyChiDoan.exe
-C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\DocumentOrganizer\obj\x86\Debug\QuanLyChiDoan.pdb
+C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\DocumentOrganizer\bin\Debug\QuanLyChiDoan.exe.config
 C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\DocumentOrganizer\bin\Debug\QuanLyChiDoan.exe
 C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\DocumentOrganizer\bin\Debug\QuanLyChiDoan.pdb
+C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\DocumentOrganizer\bin\Debug\HelperFormControl.dll
+C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\DocumentOrganizer\bin\Debug\ConstantLibrary.dll
+C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\DocumentOrganizer\bin\Debug\HelperFormControl.pdb
+C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\DocumentOrganizer\bin\Debug\ConstantLibrary.pdb
 C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\DocumentOrganizer\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\DocumentOrganizer\obj\x86\Debug\QuanLyChiDoan.MainForm.resources
 C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\DocumentOrganizer\obj\x86\Debug\QuanLyChiDoan.Properties.Resources.resources
-C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\DocumentOrganizer\obj\x86\Debug\GenerateResource.read.1.tlog
-C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\DocumentOrganizer\obj\x86\Debug\GenerateResource.write.1.tlog
-C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\DocumentOrganizer\bin\Debug\QuanLyChiDoan.exe.config
 C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\DocumentOrganizer\obj\x86\Debug\QuanLyChiDoan.AddNewChidoan.resources
 C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\DocumentOrganizer\obj\x86\Debug\QuanLyChiDoan.SignIn.resources
-C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\DocumentOrganizer\bin\Debug\HelperFormControl.dll
-C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\DocumentOrganizer\bin\Debug\HelperFormControl.pdb
-C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\DocumentOrganizer\bin\Debug\ConstantLibrary.dll
-C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\DocumentOrganizer\bin\Debug\ConstantLibrary.pdb
+C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\DocumentOrganizer\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\DocumentOrganizer\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\DocumentOrganizer\obj\x86\Debug\QuanLyChiDoan.exe
+C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\DocumentOrganizer\obj\x86\Debug\QuanLyChiDoan.pdb

@@ -111,7 +111,7 @@
             this.Controls.Add(this.loginTxt);
             this.Controls.Add(this.label1);
             this.Name = "SignIn";
-            this.Text = "SignIn";
+            this.Text = "z";
             this.ResumeLayout(false);
             this.PerformLayout();
 

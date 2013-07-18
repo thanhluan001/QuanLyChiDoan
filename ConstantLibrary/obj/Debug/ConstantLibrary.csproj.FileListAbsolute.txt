@@ -1,6 +1,5 @@
-C:\Users\Luan\documents\visual studio 2010\Projects\QuanLyChiDoan\ConstantLibrary\bin\Debug\ConstantLibrary.dll.config
-C:\Users\Luan\documents\visual studio 2010\Projects\QuanLyChiDoan\ConstantLibrary\bin\Debug\ConstantLibrary.dll
-C:\Users\Luan\documents\visual studio 2010\Projects\QuanLyChiDoan\ConstantLibrary\bin\Debug\ConstantLibrary.pdb
-C:\Users\Luan\documents\visual studio 2010\Projects\QuanLyChiDoan\ConstantLibrary\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\Luan\documents\visual studio 2010\Projects\QuanLyChiDoan\ConstantLibrary\obj\Debug\ConstantLibrary.dll
-C:\Users\Luan\documents\visual studio 2010\Projects\QuanLyChiDoan\ConstantLibrary\obj\Debug\ConstantLibrary.pdb
+C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\ConstantLibrary\bin\Debug\ConstantLibrary.dll
+C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\ConstantLibrary\bin\Debug\ConstantLibrary.pdb
+C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\ConstantLibrary\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\ConstantLibrary\obj\Debug\ConstantLibrary.dll
+C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\ConstantLibrary\obj\Debug\ConstantLibrary.pdb

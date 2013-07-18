@@ -15,5 +15,17 @@ namespace ConstantLibrary
             set;
         }
 
+        // get new data if chidoanID object changed
+        public static void refreshChidoanList()
+        {
+            chidoanID = SQLCall.getChidoanInfo();
+        }
+
+        /*
+        public Constant()
+        {
+            chidoanID = SQLCall.getChidoanInfo();
+        }
+        */
     }
 }

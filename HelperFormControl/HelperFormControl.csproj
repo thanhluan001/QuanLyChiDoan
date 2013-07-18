@@ -43,6 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddChidoan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AddChidoan.Designer.cs">
+      <DependentUpon>AddChidoan.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -53,6 +59,9 @@
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AddChidoan.resx">
+      <DependentUpon>AddChidoan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddUserControl.resx">
       <DependentUpon>AddUserControl.cs</DependentUpon>
     </EmbeddedResource>
