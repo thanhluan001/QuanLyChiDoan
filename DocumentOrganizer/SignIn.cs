@@ -18,13 +18,19 @@ namespace QuanLyChiDoan
 
         public void setErrorMessage(string errMsg)
         {
-            ErrorMsg.Text = errMsg;
+            ErrorLabel.ForeColor = Color.Red;
+            ErrorLabel.Text = errMsg;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void SigninBtn_Click(object sender, EventArgs e)
         {
-            SQLCall.isSignInSucessful(loginTxt.Text, passTxt.Text);
+            if (SQLCall.isSignInSucessful(loginTxt.Text, passTxt.Text))
+                DialogResult = DialogResult.OK;
+            else
+                setErrorMessage("Usernam or password is not correct");
+            
         }
+
 
 
     }

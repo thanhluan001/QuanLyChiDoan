@@ -120,8 +120,10 @@
             this.button2 = new System.Windows.Forms.Button();
             this.OpenDocButton = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.addUserControl1 = new HelperFormControl.AddUserControl();
+            this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.addChidoan1 = new HelperFormControl.AddChidoan();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.NewItem.SuspendLayout();
@@ -135,6 +137,7 @@
             this.Result.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage5.SuspendLayout();
+            this.tabPage6.SuspendLayout();
             this.SuspendLayout();
             // 
             // EnterButton
@@ -164,6 +167,7 @@
             this.tabControl1.Controls.Add(this.Search);
             this.tabControl1.Controls.Add(this.Result);
             this.tabControl1.Controls.Add(this.tabPage5);
+            this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Location = new System.Drawing.Point(6, 7);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -1032,17 +1036,34 @@
             this.tabPage5.Text = "Test";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // openFileDialog2
-            // 
-            this.openFileDialog2.FileName = "openFileDialog2";
-            this.openFileDialog2.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog2_FileOk);
-            // 
             // addUserControl1
             // 
             this.addUserControl1.Location = new System.Drawing.Point(19, 16);
             this.addUserControl1.Name = "addUserControl1";
             this.addUserControl1.Size = new System.Drawing.Size(707, 456);
             this.addUserControl1.TabIndex = 0;
+            // 
+            // openFileDialog2
+            // 
+            this.openFileDialog2.FileName = "openFileDialog2";
+            this.openFileDialog2.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog2_FileOk);
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.Controls.Add(this.addChidoan1);
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Size = new System.Drawing.Size(744, 486);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "TestAddChidoan";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // addChidoan1
+            // 
+            this.addChidoan1.Location = new System.Drawing.Point(114, 41);
+            this.addChidoan1.Name = "addChidoan1";
+            this.addChidoan1.Size = new System.Drawing.Size(436, 291);
+            this.addChidoan1.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -1072,6 +1093,7 @@
             this.Result.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage5.ResumeLayout(false);
+            this.tabPage6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1171,6 +1193,8 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog2;
         private System.Windows.Forms.TabPage tabPage5;
         private HelperFormControl.AddUserControl addUserControl1;
+        private System.Windows.Forms.TabPage tabPage6;
+        private HelperFormControl.AddChidoan addChidoan1;
     }
 }
 

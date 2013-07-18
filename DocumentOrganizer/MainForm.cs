@@ -30,11 +30,12 @@ namespace QuanLyChiDoan
             //validation, sign in
             SignIn signin = new SignIn();
 
-            while (signin.ShowDialog() != DialogResult.OK)
+            while ( signin.ShowDialog() != DialogResult.OK)
             {
-                signin.setErrorMessage("Log in unsucessful. Please try again");
+                
             }
 
+            
             //initialize
             GenderComboBox.SelectedIndex = 1;
 

@@ -12,10 +12,15 @@ namespace HelperFormControl
 {
     public partial class AddUserControl : UserControl
     {
+        public bool isInsertMode = true;
+
         public AddUserControl()
         {
             InitializeComponent();
 
+            dateOfBirthDrp.Value = DateTime.Now.AddYears(-25);
+            GenderComboBox.SelectedIndex = 0;
+            Constant.refreshChidoanList();
             PersonalInfoChidoanComboBox.Items.AddRange(Constant.chidoanID.Keys.ToArray());
         }
 
@@ -24,31 +29,42 @@ namespace HelperFormControl
             //Check form completion
             if (!ValidateInputPersonalInfo()) return;
 
+            //check image is empty or not 
+            string imageID = string.Empty ;
+            if (AvataPic.ImageLocation != "noPhoto.png" && AvataPic.ImageLocation != string.Empty && AvataPic.ImageLocation != null)
+                imageID = SQLCall.getImageID().ToString();
+
             //Enter this information to database
-            SQLCall.insertDoanVienPersonalInfo(Constant.chidoanID[PersonalInfoChidoanComboBox.SelectedItem.ToString()],
+            if (isInsertMode)
+                SQLCall.insertDoanVienPersonalInfo(Constant.chidoanID[PersonalInfoChidoanComboBox.SelectedItem.ToString()],
                                             NameTxt.Text, dateOfBirthDrp.Value,
                                             GenderComboBox.SelectedItem.ToString(),
                                             SQLCall.ifEmptyThenNull(ReligionTxt.Text),
-                                            SQLCall.ifEmptyThenNull(RaceTxt.Text));
+                                            SQLCall.ifEmptyThenNull(RaceTxt.Text),
+                                            SQLCall.ifEmptyThenNull(imageID));
+            else
+                SQLCall.updateDoanVienPersonalInfo(Constant.currentDoanVienID,
+                                            Constant.chidoanID[PersonalInfoChidoanComboBox.SelectedItem.ToString()],
+                                            NameTxt.Text, dateOfBirthDrp.Value,
+                                            GenderComboBox.SelectedItem.ToString(),
+                                            SQLCall.ifEmptyThenNull(ReligionTxt.Text),
+                                            SQLCall.ifEmptyThenNull(RaceTxt.Text),
+                                            SQLCall.ifEmptyThenNull(imageID));
 
-            
-            Constant.currentDoanVienID = SQLCall.getIDDoanVien();
+            if (isInsertMode)
+                Constant.currentDoanVienID = SQLCall.getIDDoanVien();
 
-            /*
-            if (AvataPic.ImageLocation != "noPhoto.png")
-                SQLCall.saveBlob(Constant.currentDoanVienID, openFileDialog2.FileName);
-            */
             // Notification
             MessageBox.Show("Insert completed", "Notification");
 
             //housekeeping
-            ClearField();
+            //ClearField();
 
-            
             ((Control)NewMemberTab.TabPages[1]).Enabled = true;
             ((Control)NewMemberTab.TabPages[2]).Enabled = true;
 
             NewMemberTab.SelectedIndex = 1; //change tab when finished
+            isInsertMode = false;
         }
 
         private bool ValidateInputPersonalInfo()
@@ -67,8 +83,64 @@ namespace HelperFormControl
         {
             NameTxt.Text = string.Empty;
             GenderComboBox.SelectedIndex = GenderComboBox.Items.Count - 1;
-            dateOfBirthDrp.Value = DateTime.Now;
+            dateOfBirthDrp.Value = DateTime.Now.AddYears(-25) ;
             AvataPic.ImageLocation = "noPhoto.png";
+        }
+
+        private void ChangePicButton_Click(object sender, EventArgs e)
+        {
+            openFileDialog2.ShowDialog();
+        }
+
+        private void openFileDialog2_FileOk(object sender, CancelEventArgs e)
+        {
+            string filePath = openFileDialog2.FileName;
+
+            //insert into database
+            SQLCall.saveBlob( Constant.currentDoanVienID, filePath);
+
+            //set picture
+            AvataPic.ImageLocation = filePath;
+        }
+
+        private void ContactButton_Click(object sender, EventArgs e)
+        {
+            //validation
+            if (Constant.currentDoanVienID == -1)
+            {
+                MessageBox.Show("Invalid doan vien ID", "Error");
+                return;
+            }
+
+            //process
+            SQLCall.updateDoanVienContactInfo(Constant.currentDoanVienID,
+                                SQLCall.ifEmptyThenNull(currentAddressTxt.Text),
+                                SQLCall.ifEmptyThenNull(telephoneTxt.Text),
+                                SQLCall.ifEmptyThenNull(emailTxt.Text));
+
+            // feedback
+            MessageBox.Show("Insert completed", "Notification");
+
+            ((Control)NewMemberTab.TabPages[1]).Enabled = true;
+            ((Control)NewMemberTab.TabPages[2]).Enabled = true;
+
+            NewMemberTab.SelectedIndex = 2; //change tab when finished
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            //validation
+
+            //process
+            SQLCall.updateEducationLevel(Constant.currentDoanVienID,
+                SQLCall.ifEmptyThenNull(EducationTxt.Text),
+                SQLCall.ifEmptyThenNull(ProfessionalLevelTxt.Text),
+                SQLCall.ifEmptyThenNull(PoliticalLevelTxt.Text),
+                SQLCall.ifEmptyThenNull(ResponsibilityTxt.Text),
+                DoanEntryDateDrp.Value, DangEntryDateDrp.Value);
+
+            //housecleaning
+            MessageBox.Show("Insert completed", "Notification");
         }
 
     }

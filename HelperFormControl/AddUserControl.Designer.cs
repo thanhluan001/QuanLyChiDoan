@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddUserControl));
             this.NewMemberTab = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.button7 = new System.Windows.Forms.Button();
+            this.ChangePicButton = new System.Windows.Forms.Button();
             this.AvataPic = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.EnterButton = new System.Windows.Forms.Button();
@@ -69,6 +69,7 @@
             this.DoanEntryDateDrp = new System.Windows.Forms.DateTimePicker();
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
+            this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.NewMemberTab.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AvataPic)).BeginInit();
@@ -89,7 +90,7 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.button7);
+            this.tabPage2.Controls.Add(this.ChangePicButton);
             this.tabPage2.Controls.Add(this.AvataPic);
             this.tabPage2.Controls.Add(this.label1);
             this.tabPage2.Controls.Add(this.EnterButton);
@@ -113,18 +114,20 @@
             this.tabPage2.Text = "Thông tin cá nhân";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // ChangePicButton
             // 
-            this.button7.Location = new System.Drawing.Point(484, 222);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
-            this.button7.TabIndex = 29;
-            this.button7.Text = "Đổi hình ảnh";
-            this.button7.UseVisualStyleBackColor = true;
+            this.ChangePicButton.Location = new System.Drawing.Point(484, 222);
+            this.ChangePicButton.Name = "ChangePicButton";
+            this.ChangePicButton.Size = new System.Drawing.Size(75, 23);
+            this.ChangePicButton.TabIndex = 29;
+            this.ChangePicButton.Text = "Đổi hình ảnh";
+            this.ChangePicButton.UseVisualStyleBackColor = true;
+            this.ChangePicButton.Click += new System.EventHandler(this.ChangePicButton_Click);
             // 
             // AvataPic
             // 
             this.AvataPic.Image = ((System.Drawing.Image)(resources.GetObject("AvataPic.Image")));
+            this.AvataPic.ImageLocation = "";
             this.AvataPic.Location = new System.Drawing.Point(449, 52);
             this.AvataPic.Name = "AvataPic";
             this.AvataPic.Size = new System.Drawing.Size(138, 165);
@@ -272,16 +275,17 @@
             // 
             // ContactButton
             // 
-            this.ContactButton.Location = new System.Drawing.Point(64, 207);
+            this.ContactButton.Location = new System.Drawing.Point(80, 192);
             this.ContactButton.Name = "ContactButton";
             this.ContactButton.Size = new System.Drawing.Size(75, 23);
             this.ContactButton.TabIndex = 33;
             this.ContactButton.Text = "Save";
             this.ContactButton.UseVisualStyleBackColor = true;
+            this.ContactButton.Click += new System.EventHandler(this.ContactButton_Click);
             // 
             // emailTxt
             // 
-            this.emailTxt.Location = new System.Drawing.Point(143, 124);
+            this.emailTxt.Location = new System.Drawing.Point(260, 135);
             this.emailTxt.Name = "emailTxt";
             this.emailTxt.Size = new System.Drawing.Size(100, 20);
             this.emailTxt.TabIndex = 32;
@@ -289,7 +293,7 @@
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(21, 124);
+            this.label28.Location = new System.Drawing.Point(80, 135);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(32, 13);
             this.label28.TabIndex = 31;
@@ -297,7 +301,7 @@
             // 
             // telephoneTxt
             // 
-            this.telephoneTxt.Location = new System.Drawing.Point(143, 90);
+            this.telephoneTxt.Location = new System.Drawing.Point(260, 90);
             this.telephoneTxt.Name = "telephoneTxt";
             this.telephoneTxt.Size = new System.Drawing.Size(100, 20);
             this.telephoneTxt.TabIndex = 30;
@@ -305,7 +309,7 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(21, 90);
+            this.label26.Location = new System.Drawing.Point(80, 93);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(106, 13);
             this.label26.TabIndex = 29;
@@ -314,7 +318,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(21, 54);
+            this.label15.Location = new System.Drawing.Point(80, 57);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(75, 13);
             this.label15.TabIndex = 21;
@@ -322,7 +326,7 @@
             // 
             // currentAddressTxt
             // 
-            this.currentAddressTxt.Location = new System.Drawing.Point(143, 54);
+            this.currentAddressTxt.Location = new System.Drawing.Point(260, 54);
             this.currentAddressTxt.Name = "currentAddressTxt";
             this.currentAddressTxt.Size = new System.Drawing.Size(192, 20);
             this.currentAddressTxt.TabIndex = 28;
@@ -357,6 +361,7 @@
             this.button6.TabIndex = 38;
             this.button6.Text = "Save";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // PoliticalLevelTxt
             // 
@@ -454,6 +459,11 @@
             this.label19.TabIndex = 30;
             this.label19.Text = "Ngày vào đoàn";
             // 
+            // openFileDialog2
+            // 
+            this.openFileDialog2.FileName = "openFileDialog1";
+            this.openFileDialog2.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog2_FileOk);
+            // 
             // AddUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -477,7 +487,7 @@
 
         private System.Windows.Forms.TabControl NewMemberTab;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button ChangePicButton;
         private System.Windows.Forms.PictureBox AvataPic;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button EnterButton;
@@ -515,5 +525,6 @@
         private System.Windows.Forms.DateTimePicker DoanEntryDateDrp;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.OpenFileDialog openFileDialog2;
     }
 }

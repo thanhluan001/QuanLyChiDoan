@@ -24,8 +24,8 @@ namespace ConstantLibrary
         /*
         public Constant()
         {
-            chidoanID = SQLCall.getChidoanInfo();
-        }
-        */
+            if (chidoanID == null)
+                chidoanID = SQLCall.getChidoanInfo();
+        } */       
     }
 }

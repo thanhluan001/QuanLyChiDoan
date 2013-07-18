@@ -11,25 +11,32 @@ namespace ConstantLibrary
 {
     public class SQLCall
     {
+        public static string server = "localhost";
+        public static string user = "devuser";
+        public static string pwd = "devuser";
+        public static string database = "chidoan";
+
         public static string GetConnection()
         {
-            return ConfigurationManager.ConnectionStrings["MySqlConnection"].ConnectionString;            
+            return String.Format("server={0};pwd={1};user={2};database={3};", server, pwd, user, database);
+            //return ConfigurationManager.ConnectionStrings["MySqlConnection"].ConnectionString;            
         }
 
-        public static void insertChidoanInfo(string name, DateTime termTo, DateTime termFrom, string operatingRegion)
+        public static void insertChidoanInfo(string name, DateTime termTo, DateTime termFrom, string operatingRegion, int chidoanParent)
         {
             string connStr = GetConnection();
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
                 conn.Open();
 
-                using (MySqlCommand cmd = new MySqlCommand("insert into chidoan (name, termTo, termFrom, operatingRegion) " +
-                                                        "(@name, @termTo, @termFrom, @opeartingRegion)", conn))
+                using (MySqlCommand cmd = new MySqlCommand("insert into chidoan.chidoaninfo (name, termTo, termFrom, operationRegion, chidoan_parent) " +
+                                                        "values (@name, @termTo, @termFrom, @operationRegion, @chidoanParent)", conn))
                 {
                     cmd.Parameters.AddWithValue("@name", name);
-                    cmd.Parameters.AddWithValue("@termTo", termTo);
-                    cmd.Parameters.AddWithValue("@termFrom", termFrom);
-                    cmd.Parameters.AddWithValue("@opeartingRegion", operatingRegion);
+                    cmd.Parameters.AddWithValue("@termTo", termTo.Date);
+                    cmd.Parameters.AddWithValue("@termFrom", termFrom.Date);
+                    cmd.Parameters.AddWithValue("@operationRegion", operatingRegion);
+                    cmd.Parameters.AddWithValue("@chidoanParent", chidoanParent);
 
                     cmd.ExecuteNonQuery();
                 }
@@ -72,16 +79,6 @@ namespace ConstantLibrary
                     while (r.Read())
                     {
                         result.Add(r["name"].ToString(),Convert.ToInt32(r["chidoanID"]));
-
-                        /*if (count)
-                        {
-                            string format = "MMM d yyyy"; 
-                            TermFrom.Text =  ((DateTime)r["termFrom"]).ToString(format);
-                            TermTo.Text = ((DateTime)r["termTo"]).ToString(format);
-                            OperationalRegionLabel.Text = r["operationRegion"].ToString();
-
-                            count = false;
-                        }*/
                     }
                 }
             }
@@ -108,15 +105,17 @@ namespace ConstantLibrary
             return result;
         }
 
-        public static void insertDoanVienPersonalInfo(int chidoanID, string name, DateTime dateofbirth, string gender, string religion, string race)
+        public static void updateDoanVienPersonalInfo(int doanvienID, int chidoanID, string name, DateTime dateofbirth, string gender, string religion, string race, string imageID)
         {
             string connStr = GetConnection();
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
                 conn.Open();
 
-                using (MySqlCommand cmd = new MySqlCommand("insert into chidoan.doanvienrecord (chidoanID, name, dateofbirth, gender, religion, race)" +
-                                    "values (@chidoanID, @name, @dateofbirth, @gender, @religion, @race)", conn))
+                using (MySqlCommand cmd = new MySqlCommand("update chidoan.doanvienrecord " +
+                                    "set chidoanID=@chidoanID, name=@name, dateofbirth=@dateofbirth, " + 
+                                    "gender=@gender, religion=@religion, race=@race, imageID=@imageID " +                                    
+                                    "where ID=@doanvienID ", conn))
                 {
                     cmd.Parameters.AddWithValue("@chidoanID", chidoanID);
                     cmd.Parameters.AddWithValue("@name", name);
@@ -124,13 +123,38 @@ namespace ConstantLibrary
                     cmd.Parameters.AddWithValue("@gender", gender);
                     cmd.Parameters.AddWithValue("@religion", religion);
                     cmd.Parameters.AddWithValue("@race", race);
+                    cmd.Parameters.AddWithValue("@imageID", imageID);
+                    cmd.Parameters.AddWithValue("@doanvienID", doanvienID);
 
                     cmd.ExecuteNonQuery();
                 }
             }
         }
 
-        public static void insertDoanVienContactInfo(int ID, string currentaddress, string telephone, string email)
+        public static void insertDoanVienPersonalInfo(int chidoanID, string name, DateTime dateofbirth, string gender, string religion, string race, string imageID)
+        {
+            string connStr = GetConnection();
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            {
+                conn.Open();
+
+                using (MySqlCommand cmd = new MySqlCommand("insert into chidoan.doanvienrecord (chidoanID, name, dateofbirth, gender, religion, race, imageID)" +
+                                    "values (@chidoanID, @name, @dateofbirth, @gender, @religion, @race, @imageID)", conn))
+                {
+                    cmd.Parameters.AddWithValue("@chidoanID", chidoanID);
+                    cmd.Parameters.AddWithValue("@name", name);
+                    cmd.Parameters.AddWithValue("@dateofbirth", dateofbirth);
+                    cmd.Parameters.AddWithValue("@gender", gender);
+                    cmd.Parameters.AddWithValue("@religion", religion);
+                    cmd.Parameters.AddWithValue("@race", race);
+                    cmd.Parameters.AddWithValue("@imageID", imageID);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public static void updateDoanVienContactInfo(int ID, string currentaddress, string telephone, string email)
         {
             string connStr = GetConnection();
             using (MySqlConnection conn = new MySqlConnection(connStr))
@@ -151,6 +175,22 @@ namespace ConstantLibrary
             }
         }
 
+        public static int getImageID()
+        {
+            int result = -1;
+            string connStr = GetConnection();
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            {
+                conn.Open();
+
+                using (MySqlCommand cmd = new MySqlCommand("select imageID from chidoan.image order by imageID DESC limit 1", conn))
+                {
+                    result = Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            }
+            return result;
+        }
+
         public static int getIDDoanVien()
         {
             int result = -1;
@@ -167,7 +207,7 @@ namespace ConstantLibrary
             return result;
         }
 
-        public static void insertEducationLevel(int ID, string educationLevel, string professionalLevel, 
+        public static void updateEducationLevel(int ID, string educationLevel, string professionalLevel, 
                                             string politicalLevel, string responsibility,
                                             DateTime DoanEntryDate, DateTime DangEntryDate)
         {
@@ -178,18 +218,17 @@ namespace ConstantLibrary
 
                 using (MySqlCommand cmd = new MySqlCommand("update chidoan.doanvienrecord " +
                                     "set education=@educationLevel, professionalLevel=@professionalLevel, politicalLevel=@politicalLevel, " +
-                                    "DoanEntryDate=@DoanEntryDate, DangEntryDate=@DangEntryDate " + 
+                                    "DoanEntryDate=@DoanEntryDate, DangEntryDate=@DangEntryDate, Responsibility=@responsibility " + 
                                     "where ID=@ID", conn))
                 {
                     cmd.Parameters.AddWithValue("@ID", ID);
-                    cmd.Parameters.AddWithValue("@education", educationLevel);
+                    cmd.Parameters.AddWithValue("@educationLevel", educationLevel);
                     cmd.Parameters.AddWithValue("@professionalLevel", professionalLevel);
                     cmd.Parameters.AddWithValue("@politicalLevel", politicalLevel);
-                    cmd.Parameters.AddWithValue("@DoanEntryLevel", DoanEntryDate);
-                    cmd.Parameters.AddWithValue("@responsibility", responsibility);
                     cmd.Parameters.AddWithValue("@DoanEntryDate", DoanEntryDate);
                     cmd.Parameters.AddWithValue("@DangEntryDate", DangEntryDate);
-
+                    cmd.Parameters.AddWithValue("@responsibility", responsibility);
+                    
                     cmd.ExecuteNonQuery();
                 }
             }

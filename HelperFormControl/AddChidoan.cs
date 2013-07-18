@@ -16,7 +16,9 @@ namespace HelperFormControl
         {
             InitializeComponent();
 
+            Constant constant = new Constant();
             parentCombobox.Items.AddRange(Constant.chidoanID.Keys.ToArray());
+            parentCombobox.SelectedIndex = 0;   //set default value
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -29,7 +31,8 @@ namespace HelperFormControl
             }
 
             SQLCall.insertChidoanInfo(chidoanNameTxt.Text, fromDatePicker.Value, toDatePicker.Value,
-                                        SQLCall.ifEmptyThenNull(regionTxt.Text));
+                                        SQLCall.ifEmptyThenNull(regionTxt.Text), 
+                                        Constant.chidoanID[parentCombobox.SelectedItem.ToString()] );
 
             // housing cleaning
             MessageBox.Show("Chi doan đã được đăng nhập", "Notification");

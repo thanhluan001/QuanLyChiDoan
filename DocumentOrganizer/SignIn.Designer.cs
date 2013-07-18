@@ -32,9 +32,10 @@
             this.loginTxt = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.passTxt = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.SigninBtn = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.ErrorMsg = new System.Windows.Forms.Label();
+            this.ErrorLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -70,16 +71,15 @@
             this.passTxt.Size = new System.Drawing.Size(132, 20);
             this.passTxt.TabIndex = 3;
             // 
-            // button1
+            // SigninBtn
             // 
-            this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button1.Location = new System.Drawing.Point(70, 131);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Sign In";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.SigninBtn.Location = new System.Drawing.Point(70, 131);
+            this.SigninBtn.Name = "SigninBtn";
+            this.SigninBtn.Size = new System.Drawing.Size(75, 23);
+            this.SigninBtn.TabIndex = 4;
+            this.SigninBtn.Text = "Sign In";
+            this.SigninBtn.UseVisualStyleBackColor = true;
+            this.SigninBtn.Click += new System.EventHandler(this.SigninBtn_Click);
             // 
             // button2
             // 
@@ -98,20 +98,29 @@
             this.ErrorMsg.Size = new System.Drawing.Size(0, 13);
             this.ErrorMsg.TabIndex = 6;
             // 
+            // ErrorLabel
+            // 
+            this.ErrorLabel.AutoSize = true;
+            this.ErrorLabel.Location = new System.Drawing.Point(70, 19);
+            this.ErrorLabel.Name = "ErrorLabel";
+            this.ErrorLabel.Size = new System.Drawing.Size(0, 13);
+            this.ErrorLabel.TabIndex = 7;
+            // 
             // SignIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(348, 179);
+            this.Controls.Add(this.ErrorLabel);
             this.Controls.Add(this.ErrorMsg);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.SigninBtn);
             this.Controls.Add(this.passTxt);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.loginTxt);
             this.Controls.Add(this.label1);
             this.Name = "SignIn";
-            this.Text = "z";
+            this.Text = "Login";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -123,8 +132,9 @@
         private System.Windows.Forms.TextBox loginTxt;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox passTxt;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button SigninBtn;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label ErrorMsg;
+        private System.Windows.Forms.Label ErrorLabel;
     }
 }
