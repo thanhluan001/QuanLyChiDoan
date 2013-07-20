@@ -139,6 +139,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ConstantLibrary\ConstantLibrary.csproj">
+      <Project>{1D1DCAA5-06F0-4EE3-B100-FFE806FE3956}</Project>
+      <Name>ConstantLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HelperFormControl\HelperFormControl.csproj">
       <Project>{DF8AEF1D-C102-48F9-B8C3-79B03CB1DACE}</Project>
       <Name>HelperFormControl</Name>

@@ -10,3 +10,4 @@ C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\HelperFormCont
 C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\HelperFormControl\obj\Debug\HelperFormControl.dll
 C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\HelperFormControl\obj\Debug\HelperFormControl.pdb
 C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\HelperFormControl\obj\Debug\HelperFormControl.Properties.Resources.resources
+C:\Users\Luan\Documents\Visual Studio 2010\Projects\QuanLyChiDoan\HelperFormControl\obj\Debug\HelperFormControl.SearchDoanVien.resources

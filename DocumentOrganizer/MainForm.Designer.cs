@@ -87,6 +87,7 @@
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.Search = new System.Windows.Forms.TabPage();
+            this.button8 = new System.Windows.Forms.Button();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.KeywordTxt = new System.Windows.Forms.TextBox();
@@ -121,9 +122,10 @@
             this.OpenDocButton = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.addUserControl1 = new HelperFormControl.AddUserControl();
-            this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.addChidoan1 = new HelperFormControl.AddChidoan();
+            this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
+            this.button9 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.NewItem.SuspendLayout();
@@ -176,6 +178,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button9);
             this.tabPage1.Controls.Add(this.button4);
             this.tabPage1.Controls.Add(this.NumberOfMembersLabel);
             this.tabPage1.Controls.Add(this.label24);
@@ -198,7 +201,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(400, 22);
+            this.button4.Location = new System.Drawing.Point(450, 22);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 15;
@@ -698,6 +701,7 @@
             // 
             // Search
             // 
+            this.Search.Controls.Add(this.button8);
             this.Search.Controls.Add(this.comboBox2);
             this.Search.Controls.Add(this.label9);
             this.Search.Controls.Add(this.KeywordTxt);
@@ -722,6 +726,15 @@
             this.Search.Text = "Tìm kiếm đoàn viên";
             this.Search.UseVisualStyleBackColor = true;
             // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(236, 447);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(127, 23);
+            this.button8.TabIndex = 17;
+            this.button8.Text = "Search All Doanvien";
+            this.button8.UseVisualStyleBackColor = true;
+            // 
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
@@ -735,7 +748,7 @@
             "Thông Báo",
             "Giấy mời họp",
             "Khác "});
-            this.comboBox2.Location = new System.Drawing.Point(100, 236);
+            this.comboBox2.Location = new System.Drawing.Point(106, 200);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(146, 21);
             this.comboBox2.TabIndex = 16;
@@ -743,7 +756,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(46, 236);
+            this.label9.Location = new System.Drawing.Point(41, 200);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(49, 13);
             this.label9.TabIndex = 15;
@@ -884,7 +897,7 @@
             // 
             // SearchButton
             // 
-            this.SearchButton.Location = new System.Drawing.Point(100, 434);
+            this.SearchButton.Location = new System.Drawing.Point(100, 447);
             this.SearchButton.Name = "SearchButton";
             this.SearchButton.Size = new System.Drawing.Size(75, 23);
             this.SearchButton.TabIndex = 3;
@@ -1043,11 +1056,6 @@
             this.addUserControl1.Size = new System.Drawing.Size(707, 456);
             this.addUserControl1.TabIndex = 0;
             // 
-            // openFileDialog2
-            // 
-            this.openFileDialog2.FileName = "openFileDialog2";
-            this.openFileDialog2.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog2_FileOk);
-            // 
             // tabPage6
             // 
             this.tabPage6.Controls.Add(this.addChidoan1);
@@ -1064,6 +1072,21 @@
             this.addChidoan1.Name = "addChidoan1";
             this.addChidoan1.Size = new System.Drawing.Size(436, 291);
             this.addChidoan1.TabIndex = 0;
+            // 
+            // openFileDialog2
+            // 
+            this.openFileDialog2.FileName = "openFileDialog2";
+            this.openFileDialog2.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog2_FileOk);
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(450, 82);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(120, 23);
+            this.button9.TabIndex = 16;
+            this.button9.Text = "Get All Doanvien";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // MainForm
             // 
@@ -1195,6 +1218,8 @@
         private HelperFormControl.AddUserControl addUserControl1;
         private System.Windows.Forms.TabPage tabPage6;
         private HelperFormControl.AddChidoan addChidoan1;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button9;
     }
 }
 

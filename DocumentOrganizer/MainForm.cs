@@ -10,6 +10,8 @@ using System.Globalization;
 using System.Diagnostics;
 using System.IO;
 using MySql.Data.MySqlClient;
+using ConstantLibrary;
+
 
 namespace QuanLyChiDoan
 {
@@ -429,7 +431,12 @@ namespace QuanLyChiDoan
             {
 
             }
-            
+
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            List<DoanVien> result = DoanVien.getAllDoanvien();
         }
     }
 }

@@ -298,5 +298,62 @@ namespace ConstantLibrary
                 }
             }
         }
+
+        //------------DOANVIEN PROCEDURES-------------
+        public static List<DoanVien> getAllDoanVien() 
+        {
+            List<DoanVien> result = new List<DoanVien>();
+
+            string connStr = GetConnection();
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            {
+                conn.Open();
+
+                using (MySqlCommand cmd = new MySqlCommand("select * from chidoan.doanvienrecord", conn))
+                {
+                    MySqlDataReader r = cmd.ExecuteReader() ;
+
+                    while (r.Read())
+                    {
+                        DoanVien element = new DoanVien( Convert.ToInt32( r["ID"]));
+                        
+                        element.name = r["name"].ToString();
+                        element.dateOfBirth = setDate(r["dateofbirth"]);
+                        element.race = setVariable(r["race"]);
+                        element.religion = setVariable(r["religion"]);
+                        element.currentAddress = setVariable(r["currentaddress"]);
+                        element.education = setVariable(r["education"]);
+                        element.DoanEntryDate = setDate(r["DoanEntryDate"]);
+                        element.DangEntryDate = setDate(r["DangEntryDate"]);
+                        element.responsibility = setVariable(r["Responsibility"]);
+                        element.telephone = setVariable(r["telephone"]);
+                        element.email = setVariable(r["email"]);
+                        element.gender = setVariable(r["gender"]);
+                        element.professionalLevel = setVariable(r["professionalLevel"]);
+                        element.politicalLevel = setVariable(r["professionalLevel"]);
+
+                        result.Add(element);
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        public static string setVariable( object value )
+        {
+            if (value == DBNull.Value)
+                return null;
+            else
+                return value.ToString();
+        }
+
+        public static DateTime? setDate(object value)
+        {
+            if (value == DBNull.Value)
+                return null;
+            else
+                return DateTime.Parse(value.ToString()); 
+        }
     }
 }
