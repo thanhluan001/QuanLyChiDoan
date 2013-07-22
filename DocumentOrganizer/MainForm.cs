@@ -37,7 +37,6 @@ namespace QuanLyChiDoan
                 
             }
 
-            
             //initialize
             GenderComboBox.SelectedIndex = 1;
 

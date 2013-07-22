@@ -50,6 +50,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Chidoan.cs" />
+    <Compile Include="ChidoanActivity.cs" />
     <Compile Include="Constant.cs" />
     <Compile Include="DoanVien.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

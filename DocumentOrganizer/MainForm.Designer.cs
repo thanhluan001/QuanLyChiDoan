@@ -33,6 +33,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button9 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.NumberOfMembersLabel = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
@@ -125,7 +126,8 @@
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.addChidoan1 = new HelperFormControl.AddChidoan();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
-            this.button9 = new System.Windows.Forms.Button();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.searchDoanVien1 = new HelperFormControl.SearchDoanVien();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.NewItem.SuspendLayout();
@@ -140,6 +142,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage5.SuspendLayout();
             this.tabPage6.SuspendLayout();
+            this.tabPage7.SuspendLayout();
             this.SuspendLayout();
             // 
             // EnterButton
@@ -170,6 +173,7 @@
             this.tabControl1.Controls.Add(this.Result);
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage6);
+            this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Location = new System.Drawing.Point(6, 7);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -198,6 +202,16 @@
             this.tabPage1.TabIndex = 3;
             this.tabPage1.Text = "Thông tin chi đoàn";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(450, 82);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(120, 23);
+            this.button9.TabIndex = 16;
+            this.button9.Text = "Get All Doanvien";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button4
             // 
@@ -1078,15 +1092,22 @@
             this.openFileDialog2.FileName = "openFileDialog2";
             this.openFileDialog2.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog2_FileOk);
             // 
-            // button9
+            // tabPage7
             // 
-            this.button9.Location = new System.Drawing.Point(450, 82);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(120, 23);
-            this.button9.TabIndex = 16;
-            this.button9.Text = "Get All Doanvien";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
+            this.tabPage7.Controls.Add(this.searchDoanVien1);
+            this.tabPage7.Location = new System.Drawing.Point(4, 22);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Size = new System.Drawing.Size(744, 486);
+            this.tabPage7.TabIndex = 6;
+            this.tabPage7.Text = "TestSearch";
+            this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // searchDoanVien1
+            // 
+            this.searchDoanVien1.Location = new System.Drawing.Point(3, 15);
+            this.searchDoanVien1.Name = "searchDoanVien1";
+            this.searchDoanVien1.Size = new System.Drawing.Size(682, 432);
+            this.searchDoanVien1.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -1117,6 +1138,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.tabPage6.ResumeLayout(false);
+            this.tabPage7.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1220,6 +1242,8 @@
         private HelperFormControl.AddChidoan addChidoan1;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.TabPage tabPage7;
+        private HelperFormControl.SearchDoanVien searchDoanVien1;
     }
 }
 

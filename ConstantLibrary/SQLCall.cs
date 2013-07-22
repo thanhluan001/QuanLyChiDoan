@@ -6,6 +6,7 @@ using MySql.Data.MySqlClient;
 using System.IO;
 using System.Configuration;
 using System.Drawing;
+using ConstantLibrary;
 
 namespace ConstantLibrary
 {
@@ -304,19 +305,31 @@ namespace ConstantLibrary
         {
             List<DoanVien> result = new List<DoanVien>();
 
+            runQueryGetDoanvienList(result, "select * from chidoan.doanvienrecord", null); //NOTE: have to be select *
+                
+            return result;
+        }
+
+        private static void runQueryGetDoanvienList(List<DoanVien> result, string query, Dictionary<string, string> parameters)
+        {
             string connStr = GetConnection();
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
                 conn.Open();
 
-                using (MySqlCommand cmd = new MySqlCommand("select * from chidoan.doanvienrecord", conn))
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
-                    MySqlDataReader r = cmd.ExecuteReader() ;
+                    foreach (KeyValuePair<string, string> entry in parameters)
+                    {
+                        cmd.Parameters.AddWithValue(entry.Key, entry.Value);
+                    }
+
+                    MySqlDataReader r = cmd.ExecuteReader();
 
                     while (r.Read())
                     {
-                        DoanVien element = new DoanVien( Convert.ToInt32( r["ID"]));
-                        
+                        DoanVien element = new DoanVien(Convert.ToInt32(r["ID"]));
+
                         element.name = r["name"].ToString();
                         element.dateOfBirth = setDate(r["dateofbirth"]);
                         element.race = setVariable(r["race"]);
@@ -336,6 +349,65 @@ namespace ConstantLibrary
                     }
                 }
             }
+        }
+
+        public static List<DoanVien> searchDoanVien(string keyword, int chidoanID)
+        {
+            List<DoanVien> result = new List<DoanVien>();
+
+            if (chidoanID == -1)
+            {
+                // search all chidoan. Note: search is case INsensitive
+                StringBuilder query = new StringBuilder("select * from chidoan.doanvienrecord ");
+                
+                //construct query here 
+                if (keyword != string.Empty)
+                {
+                    query.Append("where ")
+                        .Append("name like @keyword or ")
+                        .Append("race like @keyword or ")
+                        .Append("religion like @keyword or ")
+                        .Append("currentaddress like @keyword or ")
+                        .Append("education like @keyword or ")
+                        .Append("responsibility like @keyword or ")
+                        .Append("telephone like @keyword or ")
+                        .Append("email like @keyword or ")
+                        .Append("gender like @keyword ")
+                        .Append("order by name");
+                }
+
+                Dictionary<string, string> parameters = new Dictionary<string, string>();
+                parameters.Add("@keyword", "%"+keyword+"%");
+
+                runQueryGetDoanvienList(result, query.ToString(), parameters);
+            }
+            else
+            {
+                // search with chidoan constraint
+                StringBuilder query = new StringBuilder("select * from chidoan.doanvienrecord ");
+
+                if (keyword != string.Empty)
+                {
+                    query.Append("where ")
+                        .Append("chidoanID=@chidoanID and (")
+                        .Append("name like @keyword or ")
+                        .Append("race like @keyword or ")
+                        .Append("religion like @keyword or ")
+                        .Append("currentaddress like @keyword or ")
+                        .Append("education like @keyword or ")
+                        .Append("responsibility like @keyword or ")
+                        .Append("telephone like @keyword or ")
+                        .Append("email like @keyword or ")
+                        .Append("gender like @keyword ) ")
+                        .Append("order by name");
+                }
+
+                Dictionary<string, string> parameters = new Dictionary<string, string>();
+                parameters.Add("@keyword", "%" + keyword + "%");
+                parameters.Add("@chidoanID", chidoanID.ToString());
+
+                runQueryGetDoanvienList(result, query.ToString(), parameters);
+            }
 
             return result;
         }
@@ -354,6 +426,32 @@ namespace ConstantLibrary
                 return null;
             else
                 return DateTime.Parse(value.ToString()); 
+        }
+
+        //----CHIDOAN PROCEDURE----------
+        /*public static Chidoan getChiDoanInfo(int ID)
+        {
+            
+        }
+          */
+
+        public static void addNewChidoanActivity(int chidoanID, DateTime date, string description)
+        {
+            string connStr = GetConnection();
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            {
+                conn.Open();
+
+                using (MySqlCommand cmd = new MySqlCommand("insert into chidoan.chidoanactivity (chidoanID, date, description)" +
+                                    "values ( @chidoanID, @date, @description) ", conn))
+                {
+                    cmd.Parameters.AddWithValue("@chidoanID", chidoanID);
+                    cmd.Parameters.AddWithValue("@date", date);
+                    cmd.Parameters.AddWithValue("@description", description);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
     }
 }

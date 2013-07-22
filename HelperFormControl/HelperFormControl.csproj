@@ -49,11 +49,23 @@
     <Compile Include="AddChidoan.Designer.cs">
       <DependentUpon>AddChidoan.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddChidoanActivity.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AddChidoanActivity.Designer.cs">
+      <DependentUpon>AddChidoanActivity.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="AddUserControl.Designer.cs">
       <DependentUpon>AddUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChidoanDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChidoanDetails.Designer.cs">
+      <DependentUpon>ChidoanDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -73,8 +85,14 @@
     <EmbeddedResource Include="AddChidoan.resx">
       <DependentUpon>AddChidoan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AddChidoanActivity.resx">
+      <DependentUpon>AddChidoanActivity.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddUserControl.resx">
       <DependentUpon>AddUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChidoanDetails.resx">
+      <DependentUpon>ChidoanDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
