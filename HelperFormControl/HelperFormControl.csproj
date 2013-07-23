@@ -49,11 +49,11 @@
     <Compile Include="AddChidoan.Designer.cs">
       <DependentUpon>AddChidoan.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddChidoanActivity.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="AddNewChidoanActivity.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddChidoanActivity.Designer.cs">
-      <DependentUpon>AddChidoanActivity.cs</DependentUpon>
+    <Compile Include="AddNewChidoanActivity.Designer.cs">
+      <DependentUpon>AddNewChidoanActivity.cs</DependentUpon>
     </Compile>
     <Compile Include="AddUserControl.cs">
       <SubType>UserControl</SubType>
@@ -85,8 +85,8 @@
     <EmbeddedResource Include="AddChidoan.resx">
       <DependentUpon>AddChidoan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddChidoanActivity.resx">
-      <DependentUpon>AddChidoanActivity.cs</DependentUpon>
+    <EmbeddedResource Include="AddNewChidoanActivity.resx">
+      <DependentUpon>AddNewChidoanActivity.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddUserControl.resx">
       <DependentUpon>AddUserControl.cs</DependentUpon>

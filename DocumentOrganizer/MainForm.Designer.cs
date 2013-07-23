@@ -125,9 +125,11 @@
             this.addUserControl1 = new HelperFormControl.AddUserControl();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.addChidoan1 = new HelperFormControl.AddChidoan();
-            this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.searchDoanVien1 = new HelperFormControl.SearchDoanVien();
+            this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.chidoanDetails1 = new HelperFormControl.ChidoanDetails();
+            this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.NewItem.SuspendLayout();
@@ -143,6 +145,7 @@
             this.tabPage5.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.tabPage7.SuspendLayout();
+            this.tabPage8.SuspendLayout();
             this.SuspendLayout();
             // 
             // EnterButton
@@ -174,6 +177,7 @@
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Controls.Add(this.tabPage7);
+            this.tabControl1.Controls.Add(this.tabPage8);
             this.tabControl1.Location = new System.Drawing.Point(6, 7);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -412,7 +416,7 @@
             // PersonalInfoChidoanComboBox
             // 
             this.PersonalInfoChidoanComboBox.FormattingEnabled = true;
-            this.PersonalInfoChidoanComboBox.Location = new System.Drawing.Point(119, 76);
+            this.PersonalInfoChidoanComboBox.Location = new System.Drawing.Point(119, 73);
             this.PersonalInfoChidoanComboBox.Name = "PersonalInfoChidoanComboBox";
             this.PersonalInfoChidoanComboBox.Size = new System.Drawing.Size(121, 21);
             this.PersonalInfoChidoanComboBox.TabIndex = 24;
@@ -1065,7 +1069,7 @@
             // 
             // addUserControl1
             // 
-            this.addUserControl1.Location = new System.Drawing.Point(19, 16);
+            this.addUserControl1.Location = new System.Drawing.Point(34, 16);
             this.addUserControl1.Name = "addUserControl1";
             this.addUserControl1.Size = new System.Drawing.Size(707, 456);
             this.addUserControl1.TabIndex = 0;
@@ -1082,15 +1086,10 @@
             // 
             // addChidoan1
             // 
-            this.addChidoan1.Location = new System.Drawing.Point(114, 41);
+            this.addChidoan1.Location = new System.Drawing.Point(157, 32);
             this.addChidoan1.Name = "addChidoan1";
             this.addChidoan1.Size = new System.Drawing.Size(436, 291);
             this.addChidoan1.TabIndex = 0;
-            // 
-            // openFileDialog2
-            // 
-            this.openFileDialog2.FileName = "openFileDialog2";
-            this.openFileDialog2.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog2_FileOk);
             // 
             // tabPage7
             // 
@@ -1108,6 +1107,28 @@
             this.searchDoanVien1.Name = "searchDoanVien1";
             this.searchDoanVien1.Size = new System.Drawing.Size(682, 432);
             this.searchDoanVien1.TabIndex = 0;
+            // 
+            // tabPage8
+            // 
+            this.tabPage8.Controls.Add(this.chidoanDetails1);
+            this.tabPage8.Location = new System.Drawing.Point(4, 22);
+            this.tabPage8.Name = "tabPage8";
+            this.tabPage8.Size = new System.Drawing.Size(744, 486);
+            this.tabPage8.TabIndex = 7;
+            this.tabPage8.Text = "test display chidoan";
+            this.tabPage8.UseVisualStyleBackColor = true;
+            // 
+            // chidoanDetails1
+            // 
+            this.chidoanDetails1.Location = new System.Drawing.Point(128, 14);
+            this.chidoanDetails1.Name = "chidoanDetails1";
+            this.chidoanDetails1.Size = new System.Drawing.Size(508, 385);
+            this.chidoanDetails1.TabIndex = 0;
+            // 
+            // openFileDialog2
+            // 
+            this.openFileDialog2.FileName = "openFileDialog2";
+            this.openFileDialog2.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog2_FileOk);
             // 
             // MainForm
             // 
@@ -1139,6 +1160,7 @@
             this.tabPage5.ResumeLayout(false);
             this.tabPage6.ResumeLayout(false);
             this.tabPage7.ResumeLayout(false);
+            this.tabPage8.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1244,6 +1266,8 @@
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.TabPage tabPage7;
         private HelperFormControl.SearchDoanVien searchDoanVien1;
+        private System.Windows.Forms.TabPage tabPage8;
+        private HelperFormControl.ChidoanDetails chidoanDetails1;
     }
 }
 

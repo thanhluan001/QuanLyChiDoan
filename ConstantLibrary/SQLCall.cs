@@ -305,7 +305,7 @@ namespace ConstantLibrary
         {
             List<DoanVien> result = new List<DoanVien>();
 
-            runQueryGetDoanvienList(result, "select * from chidoan.doanvienrecord", null); //NOTE: have to be select *
+            runQueryGetDoanvienList(result, "select * from chidoan.doanvienrecord", new Dictionary<string, string>() ); //NOTE: have to be select *
                 
             return result;
         }
@@ -429,12 +429,6 @@ namespace ConstantLibrary
         }
 
         //----CHIDOAN PROCEDURE----------
-        /*public static Chidoan getChiDoanInfo(int ID)
-        {
-            
-        }
-          */
-
         public static void addNewChidoanActivity(int chidoanID, DateTime date, string description)
         {
             string connStr = GetConnection();
@@ -452,6 +446,34 @@ namespace ConstantLibrary
                     cmd.ExecuteNonQuery();
                 }
             }
+        }
+
+        public static List<ChidoanActivity> getAllActivityFromOneChidoan(int chidoanID)
+        {
+            List<ChidoanActivity> result = new List<ChidoanActivity>();
+
+            string connStr = GetConnection();
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            {
+                conn.Open();
+
+                using (MySqlCommand cmd = new MySqlCommand("select * from chidoan.chidoanactivity " +
+                                                        "where chidoanID=@chidoanID", conn))
+                {
+                    cmd.Parameters.AddWithValue("@chidoanID", chidoanID);
+
+                    MySqlDataReader r = cmd.ExecuteReader();
+
+                    while (r.Read())
+                    {
+                        result.Add(new ChidoanActivity( Convert.ToInt32( r["activityID"]), 
+                                                   DateTime.Parse(r["date"].ToString()), 
+                                                   r["description"].ToString()));
+                    }
+                }
+            }
+
+            return result;
         }
     }
 }

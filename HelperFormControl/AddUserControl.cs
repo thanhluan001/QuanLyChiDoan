@@ -75,7 +75,6 @@ namespace HelperFormControl
                 MessageBox.Show("Thiếu họ và tên", "Error");
                 return false;
             }
-
             return true;
         }
 

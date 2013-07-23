@@ -112,7 +112,7 @@
             this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.label4);
             this.Name = "SearchDoanVien";
-            this.Size = new System.Drawing.Size(432, 227);
+            this.Size = new System.Drawing.Size(402, 210);
             this.ResumeLayout(false);
             this.PerformLayout();
 
