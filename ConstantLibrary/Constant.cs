@@ -21,6 +21,9 @@ namespace ConstantLibrary
             chidoanID = SQLCall.getChidoanInfo();
         }
 
+
+        public static List<DoanVien> searchResult = new List<DoanVien>();
+
         /*
         public Constant()
         {

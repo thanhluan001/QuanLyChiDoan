@@ -35,12 +35,12 @@ namespace HelperFormControl
             if (chidoanCombobox.SelectedItem.ToString() == AllChidoanOption)
             {
                 // search all chidoan
-                SQLCall.searchDoanVien(KeywordTxt.Text, -1);
+                Constant.searchResult = SQLCall.searchDoanVien(KeywordTxt.Text, -1);
             }
             else
             {
                 // search selected chidoan
-                SQLCall.searchDoanVien(KeywordTxt.Text,
+                Constant.searchResult = SQLCall.searchDoanVien(KeywordTxt.Text,
                     Constant.chidoanID[chidoanCombobox.SelectedItem.ToString()]);
             }
         }

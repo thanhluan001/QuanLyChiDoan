@@ -1120,7 +1120,7 @@
             // 
             // chidoanDetails1
             // 
-            this.chidoanDetails1.Location = new System.Drawing.Point(128, 14);
+            this.chidoanDetails1.Location = new System.Drawing.Point(95, 21);
             this.chidoanDetails1.Name = "chidoanDetails1";
             this.chidoanDetails1.Size = new System.Drawing.Size(508, 385);
             this.chidoanDetails1.TabIndex = 0;
