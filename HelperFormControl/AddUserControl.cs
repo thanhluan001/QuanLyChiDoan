@@ -24,6 +24,16 @@ namespace HelperFormControl
             PersonalInfoChidoanComboBox.Items.AddRange(Constant.chidoanID.Keys.ToArray());
         }
 
+        public void changeInsertMode()
+        {
+            isInsertMode = false;
+        }
+
+        public void PrepareEditMode(int userID)
+        {
+
+        }
+
         private void EnterButton_Click(object sender, EventArgs e)
         {
             //Check form completion

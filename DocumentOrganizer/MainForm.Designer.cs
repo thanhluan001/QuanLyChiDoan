@@ -122,14 +122,17 @@
             this.button2 = new System.Windows.Forms.Button();
             this.OpenDocButton = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.addUserControl1 = new HelperFormControl.AddUserControl();
             this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.addChidoan1 = new HelperFormControl.AddChidoan();
             this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.searchDoanVien1 = new HelperFormControl.SearchDoanVien();
             this.tabPage8 = new System.Windows.Forms.TabPage();
-            this.chidoanDetails1 = new HelperFormControl.ChidoanDetails();
+            this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.addAccountControl1 = new HelperFormControl.AddAccountControl();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
+            this.addUserControl1 = new HelperFormControl.AddUserControl();
+            this.addChidoan1 = new HelperFormControl.AddChidoan();
+            this.searchDoanVien1 = new HelperFormControl.SearchDoanVien();
+            this.chidoanDetails1 = new HelperFormControl.ChidoanDetails();
+            this.addUserControl2 = new HelperFormControl.AddUserControl();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.NewItem.SuspendLayout();
@@ -143,9 +146,7 @@
             this.Result.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage5.SuspendLayout();
-            this.tabPage6.SuspendLayout();
-            this.tabPage7.SuspendLayout();
-            this.tabPage8.SuspendLayout();
+            this.tabPage9.SuspendLayout();
             this.SuspendLayout();
             // 
             // EnterButton
@@ -178,6 +179,7 @@
             this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Controls.Add(this.tabPage8);
+            this.tabControl1.Controls.Add(this.tabPage9);
             this.tabControl1.Location = new System.Drawing.Point(6, 7);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -1059,13 +1061,62 @@
             // 
             // tabPage5
             // 
-            this.tabPage5.Controls.Add(this.addUserControl1);
+            this.tabPage5.Controls.Add(this.addUserControl2);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Size = new System.Drawing.Size(744, 486);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Test";
             this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Size = new System.Drawing.Size(744, 486);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "TestAddChidoan";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // tabPage7
+            // 
+            this.tabPage7.Location = new System.Drawing.Point(4, 22);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Size = new System.Drawing.Size(744, 486);
+            this.tabPage7.TabIndex = 6;
+            this.tabPage7.Text = "TestSearch";
+            this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // tabPage8
+            // 
+            this.tabPage8.Location = new System.Drawing.Point(4, 22);
+            this.tabPage8.Name = "tabPage8";
+            this.tabPage8.Size = new System.Drawing.Size(744, 486);
+            this.tabPage8.TabIndex = 7;
+            this.tabPage8.Text = "test display chidoan";
+            this.tabPage8.UseVisualStyleBackColor = true;
+            // 
+            // tabPage9
+            // 
+            this.tabPage9.Controls.Add(this.addAccountControl1);
+            this.tabPage9.Location = new System.Drawing.Point(4, 22);
+            this.tabPage9.Name = "tabPage9";
+            this.tabPage9.Size = new System.Drawing.Size(744, 486);
+            this.tabPage9.TabIndex = 8;
+            this.tabPage9.Text = "AddAccount";
+            this.tabPage9.UseVisualStyleBackColor = true;
+            // 
+            // addAccountControl1
+            // 
+            this.addAccountControl1.Location = new System.Drawing.Point(208, 51);
+            this.addAccountControl1.Name = "addAccountControl1";
+            this.addAccountControl1.Size = new System.Drawing.Size(361, 250);
+            this.addAccountControl1.TabIndex = 0;
+            // 
+            // openFileDialog2
+            // 
+            this.openFileDialog2.FileName = "openFileDialog2";
+            this.openFileDialog2.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog2_FileOk);
             // 
             // addUserControl1
             // 
@@ -1074,16 +1125,6 @@
             this.addUserControl1.Size = new System.Drawing.Size(707, 456);
             this.addUserControl1.TabIndex = 0;
             // 
-            // tabPage6
-            // 
-            this.tabPage6.Controls.Add(this.addChidoan1);
-            this.tabPage6.Location = new System.Drawing.Point(4, 22);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(744, 486);
-            this.tabPage6.TabIndex = 5;
-            this.tabPage6.Text = "TestAddChidoan";
-            this.tabPage6.UseVisualStyleBackColor = true;
-            // 
             // addChidoan1
             // 
             this.addChidoan1.Location = new System.Drawing.Point(157, 32);
@@ -1091,44 +1132,26 @@
             this.addChidoan1.Size = new System.Drawing.Size(436, 291);
             this.addChidoan1.TabIndex = 0;
             // 
-            // tabPage7
-            // 
-            this.tabPage7.Controls.Add(this.searchDoanVien1);
-            this.tabPage7.Location = new System.Drawing.Point(4, 22);
-            this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Size = new System.Drawing.Size(744, 486);
-            this.tabPage7.TabIndex = 6;
-            this.tabPage7.Text = "TestSearch";
-            this.tabPage7.UseVisualStyleBackColor = true;
-            // 
             // searchDoanVien1
             // 
-            this.searchDoanVien1.Location = new System.Drawing.Point(3, 15);
+            this.searchDoanVien1.Location = new System.Drawing.Point(3, 3);
             this.searchDoanVien1.Name = "searchDoanVien1";
-            this.searchDoanVien1.Size = new System.Drawing.Size(682, 432);
+            this.searchDoanVien1.Size = new System.Drawing.Size(611, 432);
             this.searchDoanVien1.TabIndex = 0;
-            // 
-            // tabPage8
-            // 
-            this.tabPage8.Controls.Add(this.chidoanDetails1);
-            this.tabPage8.Location = new System.Drawing.Point(4, 22);
-            this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Size = new System.Drawing.Size(744, 486);
-            this.tabPage8.TabIndex = 7;
-            this.tabPage8.Text = "test display chidoan";
-            this.tabPage8.UseVisualStyleBackColor = true;
             // 
             // chidoanDetails1
             // 
-            this.chidoanDetails1.Location = new System.Drawing.Point(95, 21);
+            this.chidoanDetails1.Location = new System.Drawing.Point(16, 14);
             this.chidoanDetails1.Name = "chidoanDetails1";
             this.chidoanDetails1.Size = new System.Drawing.Size(508, 385);
             this.chidoanDetails1.TabIndex = 0;
             // 
-            // openFileDialog2
+            // addUserControl2
             // 
-            this.openFileDialog2.FileName = "openFileDialog2";
-            this.openFileDialog2.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog2_FileOk);
+            this.addUserControl2.Location = new System.Drawing.Point(21, 17);
+            this.addUserControl2.Name = "addUserControl2";
+            this.addUserControl2.Size = new System.Drawing.Size(707, 456);
+            this.addUserControl2.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -1158,9 +1181,7 @@
             this.Result.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage5.ResumeLayout(false);
-            this.tabPage6.ResumeLayout(false);
-            this.tabPage7.ResumeLayout(false);
-            this.tabPage8.ResumeLayout(false);
+            this.tabPage9.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1268,6 +1289,9 @@
         private HelperFormControl.SearchDoanVien searchDoanVien1;
         private System.Windows.Forms.TabPage tabPage8;
         private HelperFormControl.ChidoanDetails chidoanDetails1;
+        private System.Windows.Forms.TabPage tabPage9;
+        private HelperFormControl.AddAccountControl addAccountControl1;
+        private HelperFormControl.AddUserControl addUserControl2;
     }
 }
 

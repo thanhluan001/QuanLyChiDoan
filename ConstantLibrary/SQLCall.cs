@@ -240,6 +240,7 @@ namespace ConstantLibrary
             return input == string.Empty ? null : input;
         }
 
+        //TODO fix bug here, get the last 
         public static Bitmap loadImage(int doanvienID)
         {
             byte[] rawData;
@@ -300,6 +301,45 @@ namespace ConstantLibrary
             }
         }
 
+        public static bool checkUniqueness(string username)
+        {
+            string connStr = GetConnection();
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            {
+                conn.Open();
+
+                using (MySqlCommand cmd = new MySqlCommand("select count(*) from chidoan.account " +
+                                    "where username=@username ", conn))
+                {
+                    cmd.Parameters.AddWithValue("@username", username);
+
+                    int t = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    if (t >= 1) return false;                    
+                }
+            }
+
+            return true;    // if t == 1 then return true here 
+        }
+
+        public static void insertNewAccount(string username, string password)
+        {
+            string connStr = GetConnection();
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            {
+                conn.Open();
+
+                using (MySqlCommand cmd = new MySqlCommand("insert into chidoan.account (username, password, privilege)" +
+                                    "values ( @username, @password, 1 ) ", conn))
+                {
+                    cmd.Parameters.AddWithValue("@username", username);
+                    cmd.Parameters.AddWithValue("@password", password);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
         //------------DOANVIEN PROCEDURES-------------
         public static List<DoanVien> getAllDoanVien() 
         {
@@ -308,6 +348,11 @@ namespace ConstantLibrary
             runQueryGetDoanvienList(result, "select * from chidoan.doanvienrecord", new Dictionary<string, string>() ); //NOTE: have to be select *
                 
             return result;
+        }
+
+        public static DoanVien getDoanvienByID(int doanvienID)
+        {
+            DoanVien 
         }
 
         private static void runQueryGetDoanvienList(List<DoanVien> result, string query, Dictionary<string, string> parameters)
