@@ -21,6 +21,16 @@ namespace HelperFormControl
             //test: add chidoan name
             chidoanName = "TestAddChidoan";
 
+            //populate the data
+            ChidoanNameTxt.Text = chidoanName;
+
+            int total = SQLCall.countDoanvien(Constant.chidoanID[chidoanName]);
+            int male = SQLCall.countMale(Constant.chidoanID[chidoanName]);
+                
+            NumberOfDoanvienTxt.Text = total.ToString();
+            NumberOfMaleTxt.Text = male.ToString();
+            NumberOfFemaleTxt.Text = (total-male).ToString();
+            
             PopulateGridView();
         }
 
@@ -39,7 +49,7 @@ namespace HelperFormControl
         public void changeChidoanName(string chidoanName)
         {
             this.chidoanName = chidoanName;
-            label2.Text = chidoanName;
+            ChidoanNameTxt.Text = chidoanName;
         }
 
         private void AddActivityBtn_Click(object sender, EventArgs e)

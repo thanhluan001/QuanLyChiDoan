@@ -344,11 +344,56 @@ namespace ConstantLibrary
         }
 
         //------------DOANVIEN PROCEDURES-------------
+
+        public static int countDoanvien(int chidoanID)
+        {
+            int result = -1;
+
+            string connStr = GetConnection();
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            {
+                conn.Open();
+
+                using (MySqlCommand cmd = new MySqlCommand("select count(*) from chidoan.doanvienrecord " +
+                                                        "where chidoanID=@chidoanID ", conn))
+                {
+                    cmd.Parameters.AddWithValue("@chidoanID", chidoanID);
+                    
+                    result =  Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            }
+
+            return result;
+        }
+
+        public static int countMale(int chidoanID)
+        {
+            int result = -1;
+
+            string connStr = GetConnection();
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            {
+                conn.Open();
+
+                using (MySqlCommand cmd = new MySqlCommand("select count(*) from chidoan.doanvienrecord " +
+                                                        "where chidoanID=@chidoanID and gender='Nam' ", conn))
+                {
+                    cmd.Parameters.AddWithValue("@chidoanID", chidoanID);
+                    
+                    result =  Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            }
+
+            return result;
+        }
+        
         public static List<DoanVien> getAllDoanVien() 
         {
             List<DoanVien> result = new List<DoanVien>();
 
-            runQueryGetDoanvienList(result, "select * from chidoan.doanvienrecord", new Dictionary<string, string>() ); //NOTE: have to be select *
+            runQueryGetDoanvienList(result, "select * from chidoan.doanvienrecord " + 
+                                        "inner join ( select chidoanID, name as chidoanname from chidoan.chidoaninfo) as alias " +
+                                        "on alias.chidoanID=doanvienrecord.chidoanID ", new Dictionary<string, string>() ); //NOTE: have to be select *
                 
             return result;
         }
@@ -423,7 +468,9 @@ namespace ConstantLibrary
             {
                 // search all chidoan. Note: search is case INsensitive
                 StringBuilder query = new StringBuilder("select * from chidoan.doanvienrecord ");
-                
+                query.Append("inner join ( select chidoanID, name as chidoanname from chidoan.chidoaninfo) as alias ")
+                    .Append("on alias.chidoanID=doanvienrecord.chidoanID ");
+
                 //construct query here 
                 if (keyword != string.Empty)
                 {
@@ -472,7 +519,6 @@ namespace ConstantLibrary
 
                 runQueryGetDoanvienList(result, query.ToString(), parameters);
             }
-
             return result;
         }
 

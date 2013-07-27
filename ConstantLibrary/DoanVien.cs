@@ -7,7 +7,7 @@ namespace ConstantLibrary
 {
     public class DoanVien
     {
-        public int ID { set; private get; } 
+        public int ID { get; private set; } 
 
         public string name { get; set; }
         public DateTime? dateOfBirth { get; set; }
