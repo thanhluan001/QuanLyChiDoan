@@ -240,8 +240,12 @@ namespace ConstantLibrary
             return input == string.Empty ? null : input;
         }
 
-        //TODO fix bug here, get the last 
-        public static Bitmap loadImage(int doanvienID)
+        public static string ifNullThenEmpty(string input)
+        {
+            return input == null ? string.Empty : input;
+        }
+
+        public static Bitmap loadImage(int imageID)
         {
             byte[] rawData;
             UInt32 fileSize;
@@ -253,12 +257,11 @@ namespace ConstantLibrary
                 conn.Open();
 
                 using (MySqlCommand cmd = new MySqlCommand("select data, size from chidoan.image " +
-                                    "where doanvienID=@doanvienID", conn))
+                                    "where imageID=@imageID ", conn))
                 {
-                    cmd.Parameters.AddWithValue("@doanvienID", doanvienID);
+                    cmd.Parameters.AddWithValue("@imageID", imageID);
 
                     MySqlDataReader r = cmd.ExecuteReader();
-
                     while (r.Read())
                     {
                         fileSize = r.GetUInt32("size");                        
@@ -352,7 +355,22 @@ namespace ConstantLibrary
 
         public static DoanVien getDoanvienByID(int doanvienID)
         {
-            DoanVien 
+            List<DoanVien> result = new List<DoanVien>();
+            Dictionary<string, string> parameters = new Dictionary<string,string>();
+            parameters.Add("@doanvienID", doanvienID.ToString());
+
+            StringBuilder query = new StringBuilder();
+            query.Append("select * from chidoan.doanvienrecord ")
+                .Append("inner join ( select chidoanID, name as chidoanname from chidoan.chidoaninfo) as alias ")
+                .Append("on alias.chidoanID=doanvienrecord.chidoanID ")
+                .Append("where ID=@doanvienID ");
+
+            runQueryGetDoanvienList(result, query.ToString(), parameters);
+
+            if (result.Count == 1)
+                return result[0];
+
+            return null;
         }
 
         private static void runQueryGetDoanvienList(List<DoanVien> result, string query, Dictionary<string, string> parameters)
@@ -389,7 +407,8 @@ namespace ConstantLibrary
                         element.gender = setVariable(r["gender"]);
                         element.professionalLevel = setVariable(r["professionalLevel"]);
                         element.politicalLevel = setVariable(r["professionalLevel"]);
-
+                        element.imageID = Convert.ToInt32(setVariable(r["imageID"]));   // TODO check this
+                        element.chidoan = setVariable(r["chidoanname"]);
                         result.Add(element);
                     }
                 }
@@ -474,6 +493,42 @@ namespace ConstantLibrary
         }
 
         //----CHIDOAN PROCEDURE----------
+        public static List<Chidoan> getAllChidoan()
+        {
+            List<Chidoan> listChidoan = new List<Chidoan>();
+
+            string connStr = GetConnection();
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            {
+                conn.Open();
+
+                using (MySqlCommand cmd = new MySqlCommand("select * from chidoan.chidoaninfo ", conn))
+                {
+                    MySqlDataReader r = cmd.ExecuteReader();
+
+                    while (r.Read())
+                    {
+                        Chidoan element = new Chidoan(Convert.ToInt32(r["chidoanID"]));
+
+                        element.name = r["name"].ToString();
+
+                        if (r["termFrom"] != DBNull.Value)
+                            element.fromTerm = DateTime.Parse( r["termFrom"].ToString());
+
+                        if (r["termTo"] != DBNull.Value)
+                            element.toTerm = DateTime.Parse(r["termTo"].ToString());
+
+                        element.operatingRegion = r["operationRegion"].ToString();
+                        element.parent_chidoan = Convert.ToInt32( r["chidoan_parent"]);
+
+                        listChidoan.Add(element);
+                    }
+                }
+            }
+
+            return listChidoan;
+        }
+
         public static void addNewChidoanActivity(int chidoanID, DateTime date, string description)
         {
             string connStr = GetConnection();

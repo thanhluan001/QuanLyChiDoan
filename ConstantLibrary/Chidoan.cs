@@ -9,11 +9,11 @@ namespace ConstantLibrary
     {
         public int ID { get; private set; }
 
-        string name { get; set; }
-        DateTime? fromTerm { get; set; }
-        DateTime? toTerm { get; set; }
-        string operatingRegion { get; set; }
-        string parent_chidoan { get; set; }
+        public string name { get; set; }
+        public DateTime? fromTerm { get; set; }
+        public DateTime? toTerm { get; set; }
+        public string operatingRegion { get; set; }
+        public int parent_chidoan { get; set; }
 
         public Chidoan(int ID)
         {

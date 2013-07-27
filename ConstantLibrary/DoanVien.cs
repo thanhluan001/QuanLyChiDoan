@@ -24,6 +24,7 @@ namespace ConstantLibrary
         public string email { get; set; }
         public string professionalLevel { get; set; }
         public string politicalLevel { get; set; }
+        public int imageID { get; set; }
 
         public DoanVien(int ID)
         {

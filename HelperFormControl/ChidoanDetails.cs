@@ -36,7 +36,7 @@ namespace HelperFormControl
             }
         }
 
-        public void changeChidoanName(string chidoanName) 
+        public void changeChidoanName(string chidoanName)
         {
             this.chidoanName = chidoanName;
             label2.Text = chidoanName;

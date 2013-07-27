@@ -22,6 +22,9 @@ namespace HelperFormControl
             GenderComboBox.SelectedIndex = 0;
             Constant.refreshChidoanList();
             PersonalInfoChidoanComboBox.Items.AddRange(Constant.chidoanID.Keys.ToArray());
+
+            //test
+            PrepareEditMode(32);
         }
 
         public void changeInsertMode()
@@ -31,7 +34,37 @@ namespace HelperFormControl
 
         public void PrepareEditMode(int userID)
         {
+            DoanVien doanvien = SQLCall.getDoanvienByID(userID);
 
+            if (doanvien == null) return;
+
+            //start populating fields, textboxes, etc.
+            PersonalInfoChidoanComboBox.SelectedItem = doanvien.chidoan.ToString();
+            NameTxt.Text = doanvien.name;
+            dateOfBirthDrp.Value = doanvien.dateOfBirth.Value;
+            GenderComboBox.SelectedItem = doanvien.gender.ToString();
+            ReligionTxt.Text = SQLCall.ifNullThenEmpty(doanvien.religion);
+            RaceTxt.Text = SQLCall.ifNullThenEmpty(doanvien.race);
+
+            currentAddressTxt.Text = SQLCall.ifNullThenEmpty(doanvien.currentAddress);
+            telephoneTxt.Text = SQLCall.ifNullThenEmpty(doanvien.telephone);
+            emailTxt.Text = SQLCall.ifNullThenEmpty(doanvien.email);
+
+            EducationTxt.Text = SQLCall.ifNullThenEmpty(doanvien.education);
+            ProfessionalLevelTxt.Text = SQLCall.ifNullThenEmpty(doanvien.professionalLevel);
+            PoliticalLevelTxt.Text = SQLCall.ifNullThenEmpty(doanvien.politicalLevel);
+            ResponsibilityTxt.Text = SQLCall.ifNullThenEmpty(doanvien.responsibility);
+
+            if (doanvien.DoanEntryDate != null)
+                DoanEntryDateDrp.Value = doanvien.DoanEntryDate.Value;  //check bug if null
+            if (doanvien.DangEntryDate != null)
+                DangEntryDateDrp.Value = doanvien.DangEntryDate.Value;  //check bug if null
+
+            //polulate the image
+            if (doanvien.imageID != null)
+            {   
+                AvataPic.Image = SQLCall.loadImage(doanvien.imageID);
+            }
         }
 
         private void EnterButton_Click(object sender, EventArgs e)

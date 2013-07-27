@@ -437,5 +437,10 @@ namespace QuanLyChiDoan
         {
             List<DoanVien> result = DoanVien.getAllDoanvien();
         }
+
+        private void addUserControl2_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
